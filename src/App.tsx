@@ -126,7 +126,7 @@ export default function App() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
         <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 text-center border-t-4 border-clinic-blue">
-          <img src="/nurse.png" alt="Nurse" className="w-40 h-40 object-contain mx-auto mb-2" />
+          <img src={`${import.meta.env.BASE_URL}nurse.png`} alt="Nurse" className="w-40 h-40 object-contain mx-auto mb-2" />
           <h1 className="text-2xl font-bold text-gray-900 mb-2">{t('disclaimer_title')}</h1>
           <div className="flex items-start gap-2 bg-red-50 border border-red-200 rounded-xl p-3 mb-6 text-left">
             <AlertTriangle className="w-5 h-5 text-clinic-red flex-shrink-0 mt-0.5" />
@@ -162,7 +162,7 @@ export default function App() {
       <header className="bg-white shadow-sm sticky top-0 z-10">
         <div className="max-w-lg mx-auto w-full px-4 py-4 flex items-center justify-between">
           <button onClick={goHome} className="flex items-center gap-2">
-            <img src="/logo.png" alt="Logo" className="w-9 h-9 object-contain" />
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Logo" className="w-9 h-9 object-contain" />
             <h1 className="text-lg font-bold text-gray-800">{t('app_name')}</h1>
           </button>
           {/* Language Switcher in Header */}
@@ -176,7 +176,7 @@ export default function App() {
           <div className="space-y-4">
             {/* Welcome banner — fixed height */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 flex items-center gap-4 h-28">
-              <img src="/nurse.png" alt="Nurse" className="w-20 h-20 object-contain flex-shrink-0" />
+              <img src={`${import.meta.env.BASE_URL}nurse.png`} alt="Nurse" className="w-20 h-20 object-contain flex-shrink-0" />
               <div>
                 <h2 className="font-bold text-gray-800 text-base">{t('app_name')}</h2>
                 <p className="text-gray-500 text-xs mt-1">{t('search_placeholder')}</p>
@@ -215,7 +215,7 @@ export default function App() {
             {/* Med header card — same fixed height as welcome banner, illustration clickable */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 flex items-center gap-4 h-28">
               <button onClick={goHome} className="flex-shrink-0">
-                <img src="/nurse.png" alt="Nurse" className="w-20 h-20 object-contain" />
+                <img src={`${import.meta.env.BASE_URL}nurse.png`} alt="Nurse" className="w-20 h-20 object-contain" />
               </button>
               <div className="flex-1 min-w-0">
                 <button
