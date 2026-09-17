@@ -1,0 +1,1110 @@
+[
+  {
+    "id": "methylprednisolone",
+    "genericName": "Methylprednisolone",
+    "brandNames": ["Solu-Medrol", "Medrol", "Depo-Medrol"],
+    "activeIngredient": "Methylprednisolone sodium succinate",
+    "category": "Corticosteroid / Anti-inflammatory",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "solu_medrol_40mg",
+        "label": {
+          "th": "40 мг / 1 мл (Solu-Medrol)",
+          "en": "40 mg / 1 mL (Solu-Medrol)",
+          "ru": "40 мг / 1 мл (Солю-Медрол)"
+        },
+        "mgPerMl": 40
+      },
+      {
+        "id": "solu_medrol_125mg",
+        "label": {
+          "th": "125 мг / 2 мл (62.5 мг/мл)",
+          "en": "125 mg / 2 mL (62.5 mg/mL)",
+          "ru": "125 мг / 2 мл (62.5 мг/мл)"
+        },
+        "mgPerMl": 62.5
+      },
+      {
+        "id": "solu_medrol_500mg",
+        "label": {
+          "th": "500 мг / 8 мл (62.5 мг/мл)",
+          "en": "500 mg / 8 mL (62.5 mg/mL)",
+          "ru": "500 мг / 8 мл (62.5 мг/мл)"
+        },
+        "mgPerMl": 62.5
+      }
+    ],
+    "indications": [
+      {
+        "id": "acute_asthma_exacerbation",
+        "name": {
+          "th": "โรคหอบหืดกำเริบรุนแรง (Severe Acute Asthma / Status Asthmaticus)",
+          "en": "Severe Acute Asthma Exacerbation",
+          "ru": "Тяжелое обострение астмы / Астматический статус"
+        },
+        "protocols": [
+          {
+            "id": "methylpred_asthma_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV)", "en": "Intravenous (IV)", "ru": "Внутривенно (ВВ)" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 30,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "60",
+                  "explanationTemplate": "Standard adult asthma dose: 40-80 mg/day (60 mg IV q12h)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 125,
+            "maxDailyDoseMg": 240,
+            "frequency": {
+              "th": "ทุก 6 - 12 ชั่วโมง",
+              "en": "Every 6 - 12 hours",
+              "ru": "Каждые 6 - 12 часов"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ อย่างน้อย 3-15 นาที (ขนาดยา <= 125 mg)",
+              "en": "Slow IV push over at least 3-15 minutes (doses <= 125 mg)",
+              "ru": "Медленная ВВ инъекция в течение 3-15 минут (дозы <= 125 мг)"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "เฝ้าระวังผลข้างเคียงในผู้ป่วยตับบกพร่องรุนแรง", "en": "Monitor for increased steroid effects in severe liver disease", "ru": "Мониторинг побочных эффектов при тяжелой печеночной недостаточности" }
+            },
+            "warnings": [
+              {
+                "type": "hyperglycemia",
+                "text": {
+                  "th": "ระวังระดับน้ำตาลในเลือดสูง (Hyperglycemia) และความดันโลหิตสูง",
+                  "en": "Watch for hyperglycemia and hypertension",
+                  "ru": "Риск гипергликемии и артериальной гипертензии"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Solu-Medrol (methylprednisolone sodium succinate) Prescribing Information",
+                "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/011856s103lbl.pdf",
+                "organization": "US FDA",
+                "publicationDate": "2014"
+              },
+              {
+                "title": "GINA Global Strategy for Asthma Management and Prevention",
+                "url": "https://ginasthma.org/",
+                "organization": "GINA",
+                "publicationDate": "2023"
+              }
+            ],
+            "verificationStatus": "verified"
+          },
+          {
+            "id": "methylpred_asthma_peds",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก (Pediatric)", "en": "Pediatric", "ru": "Дети" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV)", "en": "Intravenous (IV)", "ru": "Внутривенно (ВВ)" },
+            "ageRange": { "min": 0.08, "max": 17 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 2,
+                "max": 80,
+                "defaultValue": 15
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 1, 60)",
+                  "explanationTemplate": "1 mg/kg/dose IV q12h (Max 60 mg/dose)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 60,
+            "maxDailyDoseMg": 60,
+            "frequency": {
+              "th": "ทุก 12 ชั่วโมง (1-2 mg/kg/วัน แบ่งให้)",
+              "en": "Every 12 hours (1-2 mg/kg/day divided)",
+              "ru": "Каждые 12 часов (1-2 мг/кг/сутки в 2 приема)"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ อย่างน้อย 3-5 นาที",
+              "en": "Slow IV push over at least 3-5 minutes",
+              "ru": "Медленная ВВ инъекция в течение 3-5 минут"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "เฝ้าระวังผลข้างเคียง", "en": "Monitor clinically", "ru": "Клинический мониторинг" }
+            },
+            "warnings": [
+              {
+                "type": "pediatric_monitoring",
+                "text": {
+                  "th": "คำนวณตามน้ำหนัก 1 mg/kg/dose (สูงสุดไม่เกิน 60 mg/ครั้ง)",
+                  "en": "Calculated at 1 mg/kg/dose (Max 60 mg per dose)",
+                  "ru": "Расчет 1 мг/кг на дозу (максимум 60 мг на дозу)"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "BNF for Children: Methylprednisolone",
+                "url": "https://bnfc.nice.org.uk/",
+                "organization": "NICE / Royal Pharmaceutical Society",
+                "publicationDate": "2023"
+              },
+              {
+                "title": "NAEPP Expert Panel Report 3: Guidelines for the Diagnosis and Management of Asthma",
+                "organization": "NIH NHLBI",
+                "publicationDate": "2007"
+              }
+            ],
+            "verificationStatus": "verified"
+          }
+        ]
+      },
+      {
+        "id": "pulse_therapy_immunosuppression",
+        "name": {
+          "th": "การรักษาภาวะอักเสบรุนแรง / ภูมิคุ้มกันต้านตนเอง (Pulse Therapy)",
+          "en": "High-dose Pulse Therapy / Immunosuppression",
+          "ru": "Пульс-терапия / Тяжелая иммуносупрессия"
+        },
+        "protocols": [
+          {
+            "id": "methylpred_pulse_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "หยดบริหารเข้าเส้นเลือดดำ (IV Infusion)", "en": "Intravenous Infusion (IV)", "ru": "Внутривенная инфузия (ВВ)" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 30,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 30, 1000)",
+                  "explanationTemplate": "30 mg/kg IV infusion (Max 1000 mg/dose)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 1000,
+            "maxDailyDoseMg": 1000,
+            "frequency": {
+              "th": "วันละ 1 ครั้ง เป็นเวลา 1-3 วัน",
+              "en": "Once daily for 1-3 days",
+              "ru": "1 раз в сутки в течение 1-3 дней"
+            },
+            "administration": {
+              "th": "ข้อควรระวังวิกฤต: ห้ามฉีด IV push เร็ว! ต้องหยด IV infusion ช้าๆ อย่างน้อย 30-60 นาที เพื่อป้องกันหัวใจหยุดเต้น (Cardiac arrest)",
+              "en": "CRITICAL: Do NOT give fast IV push! Infuse IV over at least 30-60 minutes to prevent sudden cardiac arrest.",
+              "ru": "КРИТИЧЕСКИ ВАЖНО: Не вводить ВВ струйно быстро! Инфузия не менее 30-60 минут во избежание остановки сердца."
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "เฝ้าระวังอย่างใกล้ชิด", "en": "Monitor closely", "ru": "Тщательный мониторинг" }
+            },
+            "warnings": [
+              {
+                "type": "cardiac_arrest_warning",
+                "text": {
+                  "th": "คำเตือนอันตราย: การฉีดขนาดยาสูง (>250 mg) เร็วเกินไปทำให้เกิดหัวใจเต้นผิดจังหวะรุนแรงและหัวใจหยุดเต้นเฉียบพลัน",
+                  "en": "CRITICAL WARNING: Rapid IV administration of high doses (>250 mg) causes fatal cardiac arrhythmias and sudden collapse.",
+                  "ru": "КРИТИЧЕСКОЕ ПРЕДУПРЕЖДЕНИЕ: Быстрое ВВ введение высоких доз (>250 мг) вызывают аритмии и остановку сердца."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Solu-Medrol Prescribing Information (High Dose Pulse Therapy Warning)",
+                "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/011856s103lbl.pdf",
+                "organization": "US FDA",
+                "publicationDate": "2014"
+              }
+            ],
+            "verificationStatus": "verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dexamethasone",
+    "genericName": "Dexamethasone",
+    "brandNames": ["Decadron", "Dexasone", "Fortecortin"],
+    "activeIngredient": "Dexamethasone sodium phosphate",
+    "category": "Corticosteroid / Anti-inflammatory / Antiemetic",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "dexa_4mg_ml",
+        "label": {
+          "th": "4 мг / 1 мл (4 мг/มล.)",
+          "en": "4 mg / 1 mL (4 mg/mL)",
+          "ru": "4 мг / 1 мл (4 мг/мл)"
+        },
+        "mgPerMl": 4
+      },
+      {
+        "id": "dexa_8mg_2ml",
+        "label": {
+          "th": "8 мг / 2 мл (4 мг/มล.)",
+          "en": "8 mg / 2 mL (4 mg/mL)",
+          "ru": "8 мг / 2 мл (4 мг/мл)"
+        },
+        "mgPerMl": 4
+      }
+    ],
+    "indications": [
+      {
+        "id": "pediatric_croup",
+        "name": {
+          "th": "โรคครูปในเด็ก (Pediatric Croup / Laryngotracheobronchitis)",
+          "en": "Pediatric Croup (Laryngotracheobronchitis)",
+          "ru": "Круп у детей (Ларинготрахеобронхит)"
+        },
+        "protocols": [
+          {
+            "id": "dexa_croup_peds",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก (Pediatric)", "en": "Pediatric", "ru": "Дети" },
+            "route": "PO",
+            "routeLabel": { "th": "ยารับประทาน / ฉีด (PO / IM / IV)", "en": "Oral / IM / IV", "ru": "Перорально / ВМ / ВВ" },
+            "ageRange": { "min": 0.5, "max": 6 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 4,
+                "max": 35,
+                "defaultValue": 12
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 0.15, 12)",
+                  "explanationTemplate": "0.15 mg/kg single dose (Max 12 mg)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 12,
+            "maxDailyDoseMg": 12,
+            "frequency": {
+              "th": "ให้ครั้งเดียว (Single dose)",
+              "en": "Single dose",
+              "ru": "Однократно"
+            },
+            "administration": {
+              "th": "รับประทาน หรือ ฉีด IM/IV ช้าๆ (ยาน้ำรับประทาน หรือใช้น้ำยาฉีดผสมน้ำหวานรับประทานได้)",
+              "en": "Oral, IM, or slow IV push over 1-3 minutes",
+              "ru": "Перорально, ВМ или медленно ВВ в течение 1-3 минут"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยาในการใช้ครั้งเดียว", "en": "No adjustment for single dose", "ru": "Без коррекции при однократном приеме" }
+            },
+            "warnings": [
+              {
+                "type": "croup_single_dose",
+                "text": {
+                  "th": "การรักษามาตรฐานใช้ขนาด 0.15 mg/kg ครั้งเดียว (สูงสุดไม่เกิน 12 mg)",
+                  "en": "Standard croup treatment is 0.15 mg/kg single dose (Max 12 mg)",
+                  "ru": "Стандарт лечения крупа: 0.15 мг/кг однократно (макс. 12 мг)"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "WHO Pocket Book of Hospital Care for Children: Croup Management",
+                "url": "https://www.who.int/publications/i/item/9789241548373",
+                "organization": "WHO",
+                "publicationDate": "2013"
+              },
+              {
+                "title": "BNF for Children: Dexamethasone Croup Dosing",
+                "url": "https://bnfc.nice.org.uk/",
+                "organization": "NICE",
+                "publicationDate": "2023"
+              }
+            ],
+            "verificationStatus": "verified"
+          }
+        ]
+      },
+      {
+        "id": "anti_inflammatory_edema",
+        "name": {
+          "th": "ภาวะสมองบวม / ต้านการอักเสบ (Cerebral Edema / Anti-inflammatory)",
+          "en": "Cerebral Edema / Anti-inflammatory",
+          "ru": "Отек мозга / Противовоспалительное действие"
+        },
+        "protocols": [
+          {
+            "id": "dexa_edema_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ (IV / IM)", "en": "Intravenous / Intramuscular (IV/IM)", "ru": "Внутривенно / Внутримышечно" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 30,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "10",
+                  "explanationTemplate": "Initial IV loading dose: 10 mg, then 4 mg IV q6h"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 10,
+            "maxDailyDoseMg": 24,
+            "frequency": {
+              "th": "เข็มแรก 10 mg จากนั้น 4 mg ทุก 6 ชั่วโมง",
+              "en": "Initial 10 mg bolus, then 4 mg every 6 hours",
+              "ru": "Начально 10 мг ВВ, затем 4 мг каждые 6 часов"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ อย่างน้อย 1-3 นาที (ฉีดเร็วอาจเกิดอาการคัน/ปวดบริเวณอวัยวะเพศชั่วคราว)",
+              "en": "Slow IV push over 1-3 minutes (rapid injection causes transient perineal irritation)",
+              "ru": "Медленная ВВ инъекция в течение 1-3 минут (быстрое введение вызывает жжение в паху)"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "เฝ้าระวังทางคลินิก", "en": "Monitor clinically", "ru": "Клинический мониторинг" }
+            },
+            "warnings": [
+              {
+                "type": "perineal_burning",
+                "text": {
+                  "th": "ฉีด IV ช้าๆ เพื่อป้องกันอาการแสบร้อนบริเวณขาหนีบ/อวัยวะเพศ (Perineal irritation)",
+                  "en": "Inject slowly IV to avoid transient perineal burning/itching",
+                  "ru": "Вводить ВВ медленно во избежание жжения в паховой области"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Decadron (dexamethasone sodium phosphate) Prescribing Information",
+                "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2004/011664s062lbl.pdf",
+                "organization": "US FDA",
+                "publicationDate": "2004"
+              }
+            ],
+            "verificationStatus": "verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fentanyl",
+    "genericName": "Fentanyl",
+    "brandNames": ["Sublimaze", "Duragesic"],
+    "activeIngredient": "Fentanyl citrate",
+    "category": "Opioid Analgesic (Schedule II Controlled Drug)",
+    "isStrict": true,
+    "availableStrengths": [
+      {
+        "id": "fentanyl_50mcg_ml",
+        "label": {
+          "th": "100 mcg / 2 мл (50 mcg/มล.)",
+          "en": "100 mcg / 2 mL (50 mcg/mL)",
+          "ru": "100 мкг / 2 мл (50 мкг/мл)"
+        },
+        "mgPerMl": 0.05
+      },
+      {
+        "id": "fentanyl_500mcg_10ml",
+        "label": {
+          "th": "500 mcg / 10 мл (50 mcg/มล.)",
+          "en": "500 mcg / 10 mL (50 mcg/mL)",
+          "ru": "500 мкг / 10 мл (50 мкг/мл)"
+        },
+        "mgPerMl": 0.05
+      }
+    ],
+    "indications": [
+      {
+        "id": "acute_severe_pain",
+        "name": {
+          "th": "ปวดรุนแรงเฉียบพลัน / ระงับปวดก่อนผ่าตัด (Acute Severe Pain / Preop Analgesia)",
+          "en": "Acute Severe Pain / Preoperative Analgesia",
+          "ru": "Острая сильная боль / Преоперационная анальгезия"
+        },
+        "protocols": [
+          {
+            "id": "fentanyl_pain_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV)", "en": "Intravenous (IV)", "ru": "Внутривенно (ВВ)" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 30,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mcg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 1, 100)",
+                  "explanationTemplate": "1 mcg/kg IV push slowly (Max 100 mcg single bolus)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 0.1,
+            "maxDailyDoseMg": 0.5,
+            "frequency": {
+              "th": "ทุก 1 - 2 ชั่วโมง เมื่อมีอาการปวด",
+              "en": "Every 1 - 2 hours PRN",
+              "ru": "Каждые 1 - 2 часа при боли"
+            },
+            "administration": {
+              "th": "ข้อควรระวังวิกฤต: ฉีด IV push ช้าๆ อย่างน้อย 1-2 นาที ห้ามฉีดเร็วเด็ดขาด!",
+              "en": "CRITICAL: Inject IV push SLOWLY over 1-2 minutes. Never inject rapidly!",
+              "ru": "КРИТИЧЕСКИ ВАЖНО: Вводить ВВ струйно МЕДЛЕННО за 1-2 минуты. Не вводить быстро!"
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "CrCl < 50 mL/min: ลดขนาดยาลง 25%; CrCl < 10 mL/min: ลดขนาดยาลง 50%", "en": "CrCl < 50 mL/min: reduce dose by 25%; CrCl < 10 mL/min: reduce dose by 50%", "ru": "КК < 50 мл/мин: снизить дозу на 25%; КК < 10 мл/мин: снизить на 50%" }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ปรับลดขนาดยาและเพิ่มระยะห่างเนื่องจากการกำจัดยาผ่านตับลดลง", "en": "Reduce dose and titrate carefully due to decreased hepatic clearance", "ru": "Снизить дозу из-за снижения клиренса в печени" }
+            },
+            "warnings": [
+              {
+                "type": "chest_wall_rigidity",
+                "text": {
+                  "th": "คำเตือนวิกฤต: การฉีด Fentanyl IV เร็วเกินไปจะทำให้เกิดกล้ามเนื้ออกเกร็งแข็ง (Chest Wall Rigidity / Wooden Chest) จนไม่สามารถช่วยหายใจได้!",
+                  "en": "CRITICAL WARNING: Rapid IV push causes severe Chest Wall Rigidity preventing ventilation! Naloxone and airway equipment must be ready.",
+                  "ru": "КРИТИЧЕСКОЕ ПРЕДУПРЕЖДЕНИЕ: Быстрое ВВ введение вызывает ригидность грудной клетки (синдром деревянной груди), делающую невозможной ИВЛ!"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Sublimaze (fentanyl citrate) Injection Prescribing Information",
+                "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2013/016619s034lbl.pdf",
+                "organization": "US FDA",
+                "publicationDate": "2013"
+              }
+            ],
+            "verificationStatus": "verified"
+          },
+          {
+            "id": "fentanyl_pain_peds",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก (Pediatric)", "en": "Pediatric", "ru": "Дети" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV)", "en": "Intravenous (IV)", "ru": "Внутривенно (ВВ)" },
+            "ageRange": { "min": 1, "max": 17 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 8,
+                "max": 70,
+                "defaultValue": 15
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mcg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 1, 50)",
+                  "explanationTemplate": "1 mcg/kg IV slowly over 3-5 minutes (Max 50 mcg/dose)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 0.05,
+            "maxDailyDoseMg": 0.25,
+            "frequency": {
+              "th": "ทุก 1 - 2 ชั่วโมง PRN",
+              "en": "Every 1 - 2 hours PRN",
+              "ru": "Каждые 1 - 2 часа при необходимости"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้ามากๆ อย่างน้อย 3-5 นาที ต้องเฝ้าระวังการหายใจและ SpO2 อย่างใกล้ชิด",
+              "en": "Slow IV push over at least 3-5 minutes with continuous SpO2 and respiratory monitoring",
+              "ru": "Очень медленное ВВ введение в течение 3-5 минут с мониторингом SpO2"
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "ปรับลดขนาดยาตาม CrCl", "en": "Reduce dose in renal impairment", "ru": "Снижение дозы при почечной недостаточности" }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ปรับลดขนาดยา", "en": "Titrate with caution", "ru": "Осторожное титрование" }
+            },
+            "warnings": [
+              {
+                "type": "peds_respiratory_depression",
+                "text": {
+                  "th": "อันตรายสูงสุด: กดการหายใจรุนแรงในเด็ก ต้องมี Naloxone และอุปกรณ์ช่วยหายใจพร้อมใช้งาน",
+                  "en": "HIGH RISK: Severe respiratory depression in pediatric patients. Naloxone must be available.",
+                  "ru": "ВЫСОКИЙ РИСК: Угнетение дыхания у детей. Налоксон должен быть под рукой."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "BNF for Children: Fentanyl Pediatric Dosing",
+                "url": "https://bnfc.nice.org.uk/",
+                "organization": "NICE",
+                "publicationDate": "2023"
+              }
+            ],
+            "verificationStatus": "verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tramadol",
+    "genericName": "Tramadol",
+    "brandNames": ["Ultram", "Tramal", "ConZip"],
+    "activeIngredient": "Tramadol hydrochloride",
+    "category": "Opioid Analgesic",
+    "isStrict": true,
+    "availableStrengths": [
+      {
+        "id": "tramadol_100mg_2ml",
+        "label": {
+          "th": "100 мг / 2 мл (50 мг/มล.)",
+          "en": "100 mg / 2 mL (50 mg/mL)",
+          "ru": "100 мг / 2 мл (50 мг/мл)"
+        },
+        "mgPerMl": 50
+      },
+      {
+        "id": "tramadol_50mg_tab",
+        "label": {
+          "th": "50 мг ยาเม็ดรับประทาน",
+          "en": "50 mg oral tablet",
+          "ru": "50 мг таблетка"
+        },
+        "mgPerMl": 0
+      }
+    ],
+    "indications": [
+      {
+        "id": "moderate_pain",
+        "name": {
+          "th": "ปวดปานกลางถึงปานกลางค่อนข้างรุนแรง (Moderate to Moderately Severe Pain)",
+          "en": "Moderate to Moderately Severe Pain",
+          "ru": "Умеренная и умеренно сильная боль"
+        },
+        "protocols": [
+          {
+            "id": "tramadol_pain_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / รับประทาน (IV / PO)", "en": "Intravenous / Oral (IV/PO)", "ru": "Внутривенно / Перорально" },
+            "ageRange": { "min": 12 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              },
+              {
+                "id": "crcl",
+                "label": { "th": "CrCl (มล./นาที)", "en": "CrCl (mL/min)", "ru": "КК (мл/мин)" },
+                "type": "number",
+                "min": 5,
+                "max": 150,
+                "defaultValue": 90
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "crcl < 30",
+                  "formula": "50",
+                  "explanationTemplate": "Renal impairment (CrCl < 30 mL/min): Dose capped at 50 mg q12h (Max 200 mg/day)"
+                },
+                {
+                  "condition": "crcl >= 30",
+                  "formula": "50",
+                  "explanationTemplate": "Standard adult dose: 50-100 mg q4-6h PRN (Max 400 mg/day)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 100,
+            "maxDailyDoseMg": 400,
+            "frequency": {
+              "th": "ทุก 4 - 6 ชั่วโมง PRN (ถ้า CrCl < 30 mL/min ให้ทุก 12 ชั่วโมง)",
+              "en": "Every 4 - 6 hours PRN (If CrCl < 30 mL/min, every 12 hours)",
+              "ru": "Каждые 4 - 6 часов (При КК < 30 мл/мин — каждые 12 часов)"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ อย่างน้อย 2-3 นาที หรือผสม 100 mL NS หยดเข้าเส้นเลือดดำ 15-30 นาที เพื่อลดอาการคลื่นไส้อาเจียนและเวียนศีรษะ",
+              "en": "Slow IV push over 2-3 minutes or dilute in 100 mL NS over 15-30 minutes to reduce nausea and dizziness",
+              "ru": "Медленное ВВ введение за 2-3 мин или разведение в 100 мл физраствора на 15-30 мин"
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "CrCl < 30 mL/min: ขยายระยะห่างเป็นทุก 12 ชั่วโมง ขนาดยาสูงสุดไม่เกิน 200 mg/วัน", "en": "CrCl < 30 mL/min: Increase interval to q12h; max daily dose 200 mg/day", "ru": "КК < 30 мл/мин: интервал каждые 12 ч, макс. 200 мг/сутки" }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ตับบกพร่องรุนแรง (Cirrhosis): 50 mg ทุก 12 ชั่วโมง (สูงสุดไม่เกิน 100 mg/วัน)", "en": "Severe hepatic impairment: 50 mg every 12 hours (Max 100 mg/day)", "ru": "Тяжелая печеночная недостаточность: 50 мг каждые 12 часов (макс. 100 мг/сутки)" }
+            },
+            "warnings": [
+              {
+                "type": "fda_contraindication_peds",
+                "text": {
+                  "th": "ข้อห้ามใช้เด็ดขาด: US FDA ห้ามใช้ Tramadol ในเด็กอายุต่ำกว่า 12 ปี เนื่องจากเสี่ยงต่อการกดการหายใจถึงชีวิต",
+                  "en": "FDA CONTRAINDICATION: Contraindicated in children under 12 years of age due to risk of severe respiratory depression.",
+                  "ru": "ПРОТИВОПОКАЗАНИЕ FDA: Противопоказан детям до 12 лет из-за риска смертельного угнетения дыхания."
+                }
+              },
+              {
+                "type": "seizure_risk",
+                "text": {
+                  "th": "ข้อควรระวัง: เพิ่มความเสี่ยงต่อการชัก (Seizure) และภาวะ Serotonin Syndrome",
+                  "en": "Warning: Lowers seizure threshold and risks Serotonin Syndrome with serotonergic drugs",
+                  "ru": "Предупреждение: снижает судорожный порог, риск серотонинового синдрома"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Ultram (tramadol hydrochloride) Prescribing Information & Drug Safety Communication",
+                "url": "https://www.fda.gov/drugs/drug-safety-and-availability/fda-drug-safety-communication-fda-restricts-use-prescription-opioid-pain-and-cough-medicines-children",
+                "organization": "US FDA",
+                "publicationDate": "2017"
+              }
+            ],
+            "verificationStatus": "verified",
+            "conflictingSources": true,
+            "sourceVariations": [
+              {
+                "source": "US FDA (2017)",
+                "difference": "Contraindicated in all pediatric patients under 12 years of age."
+              },
+              {
+                "source": "BNF for Children / European practice",
+                "difference": "Allows 1-2 mg/kg in children > 12 years (off-label usage historically in Europe for > 1 yr under strict supervision)."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ceftriaxone",
+    "genericName": "Ceftriaxone",
+    "brandNames": ["Rocephin"],
+    "activeIngredient": "Ceftriaxone sodium",
+    "category": "3rd Generation Cephalosporin Antibiotic",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "ceftriaxone_1g",
+        "label": {
+          "th": "1000 мг (1 กรัม) ผงแห้งผสมฉีด",
+          "en": "1000 mg (1 g) vial for injection",
+          "ru": "1000 мг (1 г) флакон"
+        },
+        "mgPerMl": 100
+      },
+      {
+        "id": "ceftriaxone_2g",
+        "label": {
+          "th": "2000 мг (2 กรัม) ผงแห้งผสมฉีด",
+          "en": "2000 mg (2 g) vial for injection",
+          "ru": "2000 мг (2 г) флакон"
+        },
+        "mgPerMl": 100
+      }
+    ],
+    "indications": [
+      {
+        "id": "systemic_infections",
+        "name": {
+          "th": "การติดเชื้อในระบบร่างกาย / ปอดอักเสบ / โดนยิง / โดนแทง / การติดเชื้อทางเดินปัสสาวะ",
+          "en": "Systemic Infections / Pneumonia / Sepsis / Complicated UTI",
+          "ru": "Системные инфекции / Пневмония / Сепсиส / Осложненный ИМП"
+        },
+        "protocols": [
+          {
+            "id": "ceftriaxone_adult_standard",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ (IV / IM)", "en": "Intravenous / Intramuscular (IV/IM)", "ru": "Внутривенно / Внутримышечно" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "2000",
+                  "explanationTemplate": "Standard adult dose: 1000 mg - 2000 mg IV once daily (q24h)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 2000,
+            "maxDailyDoseMg": 4000,
+            "frequency": {
+              "th": "วันละ 1 ครั้ง (ทุก 24 ชั่วโมง) หรือ แบ่งให้ทุก 12 ชั่วโมง",
+              "en": "Once daily (every 24 hours) or divided q12h",
+              "ru": "1 раз в сутки (каждые 24 часа) или каждые 12 часов"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ 3-5 นาที (1g ใน 10 mL) หรือ หยด IV infusion 15-30 นาที (ละลายใน 50-100 mL NS/D5W). สำหรับ IM ละลายด้วย 1% Lidocaine เพื่อลดอาการปวด (ห้ามนำยาสูตรผสม Lidocaine ไปฉีด IV เด็ดขาด!)",
+              "en": "IV push over 3-5 minutes or IV infusion over 15-30 minutes. For IM, reconstitute with 1% Lidocaine to reduce pain (NEVER give Lidocaine mix IV!).",
+              "ru": "ВВ струйно за 3-5 мин или инфузия 15-30 мин. Для ВМ разводить 1% лидокаином (НЕ вводить смесь с лидокаином ВВ!)."
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยาหากการทำงานของตับปกติ (ขับออกทางตับและไต)", "en": "No adjustment needed if hepatic function is normal", "ru": "Не требуется при нормальной функции печени" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "หากไตล้มเหลวและตับบกพร่องรุนแรงร่วมกัน ให้ขนาดยาสูงสุดไม่เกิน 2 กรัม/วัน", "en": "If combined severe renal AND hepatic failure, max 2 g/day", "ru": "При сочетанной тяжелой renal и hepatic недостаточности макс. 2 г/сутки" }
+            },
+            "warnings": [
+              {
+                "type": "calcium_precipitate_contraindication",
+                "text": {
+                  "th": "ข้อห้ามใช้วิกฤต: ห้ามผสมหรือให้พร้อมกับสารน้ำที่มี แคลเซียม (เช่น Ringer's Lactate / Acetar) ในสายเดียวกันเด็ดขาด เพราะจะเกิดตะกอนแคลเซียมอุดตันอวัยวะสำคัญ",
+                  "en": "CRITICAL CONTRAINDICATION: Do NOT mix or co-administer with IV calcium-containing solutions (e.g., Ringer's Lactate) due to fatal precipitation risk!",
+                  "ru": "КРИТИЧЕСКОЕ ПРОТИВОПОКАЗАНИЕ: Не смешивать и не вводить одновременно с растворами кальция (Рингер-лактат) из-за риска смертельной преципитации!"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Rocephin (ceftriaxone sodium) Prescribing Information",
+                "url": "https://www.accessdata.fda.gov/drugsatfda_docs/label/2014/050585s063lbl.pdf",
+                "organization": "US FDA",
+                "publicationDate": "2014"
+              }
+            ],
+            "verificationStatus": "verified"
+          },
+          {
+            "id": "ceftriaxone_peds_standard",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก (Pediatric)", "en": "Pediatric", "ru": "Дети" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ (IV / IM)", "en": "Intravenous / Intramuscular (IV/IM)", "ru": "Внутривенно / Внутримышечно" },
+            "ageRange": { "min": 0.08, "max": 17 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 3,
+                "max": 50,
+                "defaultValue": 12
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 50, 2000)",
+                  "explanationTemplate": "50 mg/kg/day IV once daily (Max 2000 mg/day)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 2000,
+            "maxDailyDoseMg": 2000,
+            "frequency": {
+              "th": "วันละ 1 ครั้ง (ทุก 24 ชั่วโมง) หรือ แบ่งให้ทุก 12 ชั่วโมง",
+              "en": "Once daily (every 24 hours) or divided q12h",
+              "ru": "1 раз в сутки (каждые 24 часа)"
+            },
+            "administration": {
+              "th": "หยด IV infusion ช้าๆ 15-30 นาที",
+              "en": "IV infusion over 15-30 minutes",
+              "ru": "ВВ инфузия в течение 15-30 минут"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "warnings": [
+              {
+                "type": "neonatal_kernicterus_warning",
+                "text": {
+                  "th": "ข้อห้ามใช้เด็ดขาดในทารกแรกเกิดที่มีภาวะตัวเหลือง (Hyperbilirubinemic neonates) และทารกแรกเกิด <= 28 วันที่ได้รับ Calcium IV",
+                  "en": "CONTRAINDICATED in hyperbilirubinemic neonates (risk of Kernicterus) and neonates <= 28 days receiving IV calcium.",
+                  "ru": "ПРОТИВОПОКАЗАНО новорожденным с гипербилирубинемией (риск ядерной желтухи) и новорожденным до 28 дней, получающим кальций."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "BNF for Children: Ceftriaxone Pediatric Dosing & Neonatal Contraindications",
+                "url": "https://bnfc.nice.org.uk/",
+                "organization": "NICE",
+                "publicationDate": "2023"
+              },
+              {
+                "title": "Red Book: Report of the Committee on Infectious Diseases",
+                "organization": "American Academy of Pediatrics (AAP)",
+                "publicationDate": "2021"
+              }
+            ],
+            "verificationStatus": "verified"
+          }
+        ]
+      },
+      {
+        "id": "bacterial_meningitis",
+        "name": {
+          "th": "เยื่อหุ้มสมองอักเสบจากเชื้อแบคทีเรีย (Bacterial Meningitis)",
+          "en": "Bacterial Meningitis",
+          "ru": "Бактериальный менингит"
+        },
+        "protocols": [
+          {
+            "id": "ceftriaxone_meningitis_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV)", "en": "Intravenous (IV)", "ru": "Внутривенно (ВВ)" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "2000",
+                  "explanationTemplate": "Meningitis high-dose protocol: 2000 mg IV q12h (Total 4000 mg/day)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 2000,
+            "maxDailyDoseMg": 4000,
+            "frequency": {
+              "th": "ทุก 12 ชั่วโมง",
+              "en": "Every 12 hours",
+              "ru": "Каждые 12 часов"
+            },
+            "administration": {
+              "th": "หยด IV infusion ช้าๆ 30 นาที",
+              "en": "IV infusion over 30 minutes",
+              "ru": "ВВ инфузия в течение 30 минут"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No adjustment", "ru": "Без коррекции" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No adjustment", "ru": "Без коррекции" }
+            },
+            "warnings": [
+              {
+                "type": "meningitis_high_dose",
+                "text": {
+                  "th": "ขนาดยาสูงสำหรับเยื่อหุ้มสมองอักเสบ: 2 กรัม ทุก 12 ชั่วโมง (รวม 4 กรัม/วัน)",
+                  "en": "High dose meningitis regimen: 2 grams every 12 hours (Total 4 g/day)",
+                  "ru": "Высокодозный режим при менингите: 2 грамма каждые 12 часов (всего 4 г/сутки)"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "IDSA Practice Guidelines for the Management of Bacterial Meningitis",
+                "url": "https://www.idsociety.org/",
+                "organization": "IDSA",
+                "publicationDate": "2004"
+              }
+            ],
+            "verificationStatus": "verified"
+          },
+          {
+            "id": "ceftriaxone_meningitis_peds",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก (Pediatric)", "en": "Pediatric", "ru": "Дети" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV)", "en": "Intravenous (IV)", "ru": "Внутривенно (ВВ)" },
+            "ageRange": { "min": 0.08, "max": 17 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 3,
+                "max": 50,
+                "defaultValue": 12
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 100, 4000)",
+                  "explanationTemplate": "100 mg/kg/day IV divided q12h or q24h (Max 4000 mg/day)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 2000,
+            "maxDailyDoseMg": 4000,
+            "frequency": {
+              "th": "วันละ 1 ครั้ง หรือ แบ่งให้ทุก 12 ชั่วโมง",
+              "en": "Once daily or divided q12h",
+              "ru": "1 раз в сутки или в 2 приема каждые 12 часов"
+            },
+            "administration": {
+              "th": "หยด IV infusion ช้าๆ 15-30 นาที",
+              "en": "IV infusion over 15-30 minutes",
+              "ru": "ВВ инфузия 15-30 минут"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment", "ru": "Без коррекции" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment", "ru": "Без коррекции" }
+            },
+            "warnings": [
+              {
+                "type": "peds_meningitis_dose",
+                "text": {
+                  "th": "คำนวณตามน้ำหนัก 100 mg/kg/วัน (สูงสุดไม่เกิน 4,000 mg/วัน)",
+                  "en": "Pediatric meningitis dose: 100 mg/kg/day (Max 4,000 mg/day)",
+                  "ru": "Доза при менингите у детей: 100 мг/кг/сутки (макс. 4000 мг/сутки)"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "Red Book: AAP Pediatric Bacterial Meningitis Guidelines",
+                "organization": "American Academy of Pediatrics",
+                "publicationDate": "2021"
+              }
+            ],
+            "verificationStatus": "verified"
+          }
+        ]
+      }
+    ]
+  }
+]

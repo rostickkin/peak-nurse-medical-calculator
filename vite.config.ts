@@ -15,7 +15,7 @@ export default defineConfig({
         theme_color: '#ffffff',
         background_color: '#f9fafb',
         display: 'standalone',
-        start_url: '/',
+        start_url: '/peak-nurse-medical-calculator/',
         icons: [
           {
             src: 'logo.png',

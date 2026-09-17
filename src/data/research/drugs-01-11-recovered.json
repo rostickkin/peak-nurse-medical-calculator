@@ -1,0 +1,1633 @@
+[
+  {
+    "id": "ondansetron",
+    "genericName": "Ondansetron",
+    "brandNames": ["Zofran"],
+    "activeIngredient": "Ondansetron hydrochloride",
+    "category": "Antiemetic",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "ondansetron_2mg_ml",
+        "label": {
+          "th": "4 мг / 2 мл (2 мг/มล.)",
+          "en": "4 mg / 2 mL (2 mg/mL)",
+          "ru": "4 мг / 2 мл (2 мг/мл)"
+        },
+        "mgPerMl": 2
+      }
+    ],
+    "indications": [
+      {
+        "id": "ponv",
+        "name": {
+          "th": "ป้องกันและรักษาอาการคลื่นไส้อาเจียนหลังผ่าตัด (PONV)",
+          "en": "Postoperative Nausea & Vomiting (PONV)",
+          "ru": "Профилактика и лечение послеоперационной тошноты и рвоты"
+        },
+        "protocols": [
+          {
+            "id": "ondansetron_ponv_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ (IV / IM)", "en": "Intravenous / Intramuscular (IV/IM)", "ru": "Внутривенно / Внутримышечно" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "4",
+                  "explanationTemplate": "Standard adult PONV dose: 4 mg IV (single dose) or IM"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 4,
+            "maxDailyDoseMg": 8,
+            "frequency": {
+              "th": "ครั้งเดียว (Single dose)",
+              "en": "Single dose",
+              "ru": "Однократно"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ อย่างน้อย 2-5 นาที",
+              "en": "Slow IV push over 2-5 minutes",
+              "ru": "Медленное ВВ введение в течение 2-5 минут"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ตับบกพร่องรุนแรง (Child-Pugh C): ขนาดยาสูงสุดไม่เกิน 8 mg/วัน", "en": "Severe hepatic impairment (Child-Pugh C): max 8 mg/day", "ru": "Тяжелая печеночная недостаточность (Child-Pugh C): макс. 8 мг/сутки" }
+            },
+            "warnings": [
+              {
+                "type": "qt_prolongation",
+                "text": {
+                  "th": "ระวังภาวะ QT prolongation และอาการหัวใจเต้นผิดจังหวะ",
+                  "en": "Risk of QT prolongation and cardiac arrhythmias",
+                  "ru": "Риск удлинения интервала QT и сердечных аритмий"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Zofran Label / Prescribing Information",
+                "organization": "US FDA"
+              },
+              {
+                "title": "British National Formulary (BNF)",
+                "organization": "BNF"
+              },
+              {
+                "title": "Thai FDA Register",
+                "organization": "Thai FDA"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          },
+          {
+            "id": "ondansetron_ponv_peds",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก (Pediatric)", "en": "Pediatric", "ru": "Дети" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV)", "en": "Intravenous (IV)", "ru": "Внутривенно (ВВ)" },
+            "ageRange": { "min": 0.08, "max": 12 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 1,
+                "max": 40,
+                "defaultValue": 12
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 0.1, 4)",
+                  "explanationTemplate": "0.1 mg/kg IV slowly (Max 4 mg)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 4,
+            "maxDailyDoseMg": 4,
+            "frequency": {
+              "th": "ครั้งเดียว (Single dose)",
+              "en": "Single dose",
+              "ru": "Однократно"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ อย่างน้อย 2-5 นาที",
+              "en": "Slow IV push over 2-5 minutes",
+              "ru": "Медленное ВВ введение в течение 2-5 минут"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No adjustment required", "ru": "Без коррекции" }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ตับบกพร่องรุนแรง: แนะนำให้ลดขนาดสูงสุดสำหรับเด็กลงด้วยความระมัดระวัง", "en": "Severe hepatic impairment: Max recommended dose should be reduced with caution", "ru": "Тяжелая печеночная недостаточность: максимальная доза должна быть снижена" }
+            },
+            "warnings": [
+              {
+                "type": "peds_dose_cap",
+                "text": {
+                  "th": "คำนวณตามน้ำหนัก 0.1 mg/kg ขนาดยาสูงสุดไม่เกิน 4 mg",
+                  "en": "Calculated at 0.1 mg/kg (Max single dose capped at 4 mg)",
+                  "ru": "Расчет 0.1 мг/кг (максимальная доза ограничена 4 мг)"
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "BNF for Children: Ondansetron",
+                "organization": "NICE"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "metoclopramide",
+    "genericName": "Metoclopramide",
+    "brandNames": ["Reglan"],
+    "activeIngredient": "Metoclopramide hydrochloride",
+    "category": "Antiemetic / Prokinetic",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "metoclopramide_5mg_ml",
+        "label": {
+          "th": "10 мг / 2 мл (5 мг/มล.)",
+          "en": "10 mg / 2 mL (5 mg/mL)",
+          "ru": "10 мг / 2 мл (5 мг/мл)"
+        },
+        "mgPerMl": 5
+      }
+    ],
+    "indications": [
+      {
+        "id": "nausea_vomiting_gastroparesis",
+        "name": {
+          "th": "อาการคลื่นไส้อาเจียน / กระเพาะอาหารบีบตัวช้า (Nausea/Vomiting / Gastroparesis)",
+          "en": "Nausea, Vomiting & Gastroparesis",
+          "ru": "Тошнота, рвота и гастропарез"
+        },
+        "protocols": [
+          {
+            "id": "metoclopramide_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ / รับประทาน (IV / IM / PO)", "en": "IV / IM / Oral", "ru": "ВВ / ВМ / Перорально" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              },
+              {
+                "id": "crcl",
+                "label": { "th": "CrCl (มล./นาที)", "en": "CrCl (mL/min)", "ru": "КК (мл/мин)" },
+                "type": "number",
+                "min": 5,
+                "max": 150,
+                "defaultValue": 90
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "crcl < 60",
+                  "formula": "5",
+                  "explanationTemplate": "Renal impairment (CrCl < 60 mL/min): Reduce dose by 50% to 5 mg q8h"
+                },
+                {
+                  "condition": "crcl >= 60",
+                  "formula": "10",
+                  "explanationTemplate": "Standard adult dose: 10 mg q8h"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 10,
+            "maxDailyDoseMg": 30,
+            "frequency": {
+              "th": "ทุก 8 ชั่วโมง (สูงสุด 3 ครั้งต่อวัน)",
+              "en": "Every 8 hours (Max 3 times daily)",
+              "ru": "Каждые 8 часов (максимум 3 раза в сутки)"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ อย่างน้อย 1-2 นาที หรือให้ทาง PO ระยะเวลารักษาไม่เกิน 5 วัน",
+              "en": "Slow IV push over at least 1-2 minutes or PO. Maximum treatment duration is 5 days.",
+              "ru": "Медленно ВВ в течение 1-2 минут или внутрь. Максимальная длительность лечения — 5 дней."
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "CrCl < 60 mL/min: ลดขนาดยาลง 50% (เหลือ 5 mg ทุก 8 ชั่วโมง)", "en": "CrCl < 60 mL/min: reduce dose by 50% (to 5 mg every 8 hours)", "ru": "КК < 60 мл/мин: снизить дозу на 50% (до 5 мг каждые 8 часов)" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยาในการใช้งานระยะสั้น", "en": "No routine adjustment needed for short-term use", "ru": "Обычно не требуется при кратком курсе" }
+            },
+            "warnings": [
+              {
+                "type": "tardive_dyskinesia",
+                "text": {
+                  "th": "คำเตือนสำคัญ: เสี่ยงต่อการเกิดอาการนอกอำนาจจิตใจ (Tardive Dyskinesia) ห้ามใช้ยาเกิน 5 วัน",
+                  "en": "Black Box Warning: Risk of Tardive Dyskinesia. Do not exceed 5 days of therapy.",
+                  "ru": "Предупреждение: риск тардивной дискинезии. Не применять более 5 дней."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Reglan Label / Prescribing Information",
+                "organization": "US FDA"
+              },
+              {
+                "title": "EMA Metoclopramide Article 31 Referral Guidance",
+                "organization": "EMA"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          },
+          {
+            "id": "metoclopramide_peds",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก (Pediatric)", "en": "Pediatric", "ru": "Дети" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / รับประทาน (IV / PO)", "en": "Intravenous / Oral (IV/PO)", "ru": "Внутривенно / Перорально" },
+            "ageRange": { "min": 1, "max": 17 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 5,
+                "max": 65,
+                "defaultValue": 20
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 0.1, 10)",
+                  "explanationTemplate": "0.1 mg/kg IV/PO q8h (Max single dose 10 mg)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 10,
+            "maxDailyDoseMg": 30,
+            "frequency": {
+              "th": "ทุก 8 ชั่วโมง (สูงสุด 3 ครั้งต่อวัน)",
+              "en": "Every 8 hours (Max 3 times daily)",
+              "ru": "Каждые 8 часов (максимум 3 раза в сутки)"
+            },
+            "administration": {
+              "th": "ฉีด IV ช้าๆ อย่างน้อย 1-2 นาที หรือให้รับประทาน ห้ามใช้ในเด็กอายุต่ำกว่า 1 ปี",
+              "en": "Slow IV over 1-2 minutes or oral. Contraindicated in infants under 1 year of age.",
+              "ru": "Медленно ВВ 1-2 минуты или перорально. Противопоказано детям до 1 года."
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "ปรับลดขนาดยาลง 50% หากมีภาวะไตบกพร่องรุนแรง", "en": "Reduce dose by 50% in severe renal impairment", "ru": "Снизить дозу на 50% при тяжелой почечной недостаточности" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่มีรายงานระบุสำหรับเด็ก", "en": "No specific pediatric data", "ru": "Нет специфических данных для детей" }
+            },
+            "warnings": [
+              {
+                "type": "peds_contraindication",
+                "text": {
+                  "th": "ข้อห้ามใช้เด็ดขาด: ห้ามใช้ในเด็กต่ำกว่า 1 ปี เนื่องจากเสี่ยงต่ออาการทางระบบประสาทรุนแรง (Extrapyramidal effects)",
+                  "en": "CONTRAINDICATED in children under 1 year of age due to severe extrapyramidal reaction risk.",
+                  "ru": "ПРОТИВОПОКАЗАНО детям до 1 года из-за риска тяжелых экстрапирамидных расстройств."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "EMA Metoclopramide Article 31 referral",
+                "organization": "EMA"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hyoscine_butylbromide",
+    "genericName": "Hyoscine butylbromide",
+    "brandNames": ["Buscopan"],
+    "activeIngredient": "Hyoscine butylbromide",
+    "category": "Antispasmodic",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "buscopan_20mg_ml",
+        "label": {
+          "th": "20 mg / 1 mL",
+          "en": "20 mg / 1 mL",
+          "ru": "20 мг / 1 мл"
+        },
+        "mgPerMl": 20
+      }
+    ],
+    "indications": [
+      {
+        "id": "smooth_muscle_spasm",
+        "name": {
+          "th": "การเกร็งตัวของกล้ามเนื้อเรียบ (GI/Biliary/Renal Colic)",
+          "en": "Gastrointestinal, Biliary or Renal Smooth Muscle Spasm",
+          "ru": "Спазм гладкой мускулатуры ЖКТ, желче- и мочевыводящих путей"
+        },
+        "protocols": [
+          {
+            "id": "buscopan_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ / ใต้ผิวหนัง (IV / IM / SC)", "en": "IV / IM / SC", "ru": "ВВ / ВМ / ПК" },
+            "ageRange": { "min": 12 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "20",
+                  "explanationTemplate": "Standard adult dose: 20 mg slowly, may repeat after 30 min if needed"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 20,
+            "maxDailyDoseMg": 100,
+            "frequency": {
+              "th": "ทำซ้ำได้ทุก 30 นาที (สูงสุดไม่เกิน 100 mg/วัน) หรือ PO 10-20 mg ทุก 6-8 ชั่วโมง",
+              "en": "May repeat after 30 minutes (Max 100 mg/day). PO: 10-20 mg every 6-8 hours.",
+              "ru": "Можно повторить через 30 мин (макс. 100 мг/сутки). Внутрь: 10-20 мг каждые 6-8 часов."
+            },
+            "administration": {
+              "th": "ฉีด IV ช้าๆ เพื่อป้องกันผลข้างเคียงต่อระบบหัวใจและสายตาพร่ามัว",
+              "en": "Slow IV injection to prevent cardiac side effects and transient visual disturbances.",
+              "ru": "Медленное ВВ введение для минимизации побочных эффектов со стороны сердца и зрения."
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "warnings": [
+              {
+                "type": "contraindications",
+                "text": {
+                  "th": "ข้อห้ามใช้: กล้ามเนื้ออ่อนแรง (Myasthenia gravis), ลำไส้ใหญ่โป่งพอง (Megacolon), ต้อหินมุมปิด (Glaucoma), หัวใจเต้นเร็วรุนแรง",
+                  "en": "Contraindications: Myasthenia gravis, Megacolon, Narrow-angle Glaucoma, Severe Tachycardia.",
+                  "ru": "Противопоказания: миастения, мегаколон, закрытоугольная глаукома, тяжелая тахикардия."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "MHRA Buscopan Label & Prescribing Information",
+                "organization": "MHRA"
+              },
+              {
+                "title": "Thai MOPH Drug Formulary",
+                "organization": "Thai Ministry of Public Health"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          },
+          {
+            "id": "buscopan_peds_6to12",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก 6-12 ปี (Pediatric 6-12y)", "en": "Pediatric (6-12y)", "ru": "Дети (6-12 лет)" },
+            "route": "PO",
+            "routeLabel": { "th": "ยารับประทาน (PO)", "en": "Oral (PO)", "ru": "Перорально" },
+            "ageRange": { "min": 6, "max": 12 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 15,
+                "max": 50,
+                "defaultValue": 25
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "10",
+                  "explanationTemplate": "Pediatric (6-12 years) PO dose: 10 mg q8h"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 10,
+            "maxDailyDoseMg": 30,
+            "frequency": {
+              "th": "ทุก 8 ชั่วโมง",
+              "en": "Every 8 hours",
+              "ru": "Каждые 8 часов"
+            },
+            "administration": {
+              "th": "รับประทานยาเม็ดพร้อมน้ำ",
+              "en": "Swallow tablet whole with water",
+              "ru": "Проглатывать таблетку целиком, запивая водой"
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "warnings": [
+              {
+                "type": "peds_oral_dose",
+                "text": {
+                  "th": "ใช้เฉพาะขนาดยาชนิดเม็ด 10 mg วันละ 3 ครั้ง สำหรับเด็กอายุ 6-12 ปี",
+                  "en": "Approved for oral tablets 10 mg TID only for children aged 6-12 years.",
+                  "ru": "Разрешено перорально 10 мг 3 раза в сутки только для детей 6-12 лет."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "BNF for Children: Hyoscine butylbromide",
+                "organization": "NICE"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dimenhydrinate",
+    "genericName": "Dimenhydrinate",
+    "brandNames": ["Dramamine"],
+    "activeIngredient": "Dimenhydrinate",
+    "category": "Antiemetic / Antihistamine",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "dimenhydrinate_50mg_ml",
+        "label": {
+          "th": "50 mg / 1 mL",
+          "en": "50 mg / 1 mL",
+          "ru": "50 мг / 1 мл"
+        },
+        "mgPerMl": 50
+      }
+    ],
+    "indications": [
+      {
+        "id": "motion_sickness_vertigo",
+        "name": {
+          "th": "เมาค้างจากการเคลื่อนไหว / วิงเวียนศีรษะ / คลื่นไส้อาเจียน (Motion Sickness / Vertigo)",
+          "en": "Motion Sickness, Vertigo & Nausea",
+          "ru": "Морская болезнь, вертиго, тошнота и рвота"
+        },
+        "protocols": [
+          {
+            "id": "dimenhydrinate_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ / รับประทาน (IV / IM / PO)", "en": "IV / IM / PO", "ru": "ВВ / ВМ / Внутрь" },
+            "ageRange": { "min": 12 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "50",
+                  "explanationTemplate": "Standard adult dose: 50 mg IV/IM q4-6h PRN (or PO 50-100 mg)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 100,
+            "maxDailyDoseMg": 400,
+            "frequency": {
+              "th": "ทุก 4-6 ชั่วโมงเมื่อมีอาการ (สูงสุดไม่เกิน 400 mg/วัน)",
+              "en": "Every 4-6 hours PRN (Max 400 mg/day)",
+              "ru": "Каждые 4-6 часов по необходимости (макс. 400 мг/сутки)"
+            },
+            "administration": {
+              "th": "กรณีให้ทาง IV ต้องเจือจางน้ำยาฉีดด้วยน้ำเกลือ (NS) 10 mL แล้วฉีดช้าๆ อย่างน้อย 2 นาที เพื่อเลี่ยงอาการมึนงงเฉียบพลัน",
+              "en": "Dilute IV dose with 10 mL of NS and inject slowly over at least 2 minutes to prevent sudden dizziness.",
+              "ru": "Для ВВ развести в 10 мл физраствора, вводить медленно не менее 2 минут во избежание головокружения."
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ใช้อย่างระมัดระวังในรายตับวายขั้นรุนแรง", "en": "Use with caution in severe liver dysfunction due to sedative accumulation", "ru": "С осторожностью при тяжелой печеночной недостаточности" }
+            },
+            "warnings": [
+              {
+                "type": "drowsiness_warning",
+                "text": {
+                  "th": "ระวัง: ยามีฤทธิ์ง่วงซึมรุนแรง หลีกเลี่ยงการขับขี่ยานพาหนะหรือทำงานใกล้เครื่องจักร",
+                  "en": "Warning: Causes severe drowsiness. Avoid driving or operating machinery.",
+                  "ru": "Предупреждение: вызывает сильную сонливость. Избегать вождения и работы с механизмами."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Dramamine Label & Prescribing Information",
+                "organization": "US FDA"
+              },
+              {
+                "title": "Lexicomp Drug Reference: Dimenhydrinate",
+                "organization": "Lexicomp"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          },
+          {
+            "id": "dimenhydrinate_peds",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก (Pediatric)", "en": "Pediatric", "ru": "Дети" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ / รับประทาน (IV / IM / PO)", "en": "Intravenous / Intramuscular / Oral", "ru": "Внутривенно / Внутримышечно / Перорально" },
+            "ageRange": { "min": 2, "max": 12 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 10,
+                "max": 50,
+                "defaultValue": 20
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 1.25, 25)",
+                  "explanationTemplate": "1.25 mg/kg q6h PRN (Max 25 mg/dose or capped per age limit)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 25,
+            "maxDailyDoseMg": 150,
+            "frequency": {
+              "th": "ทุก 6 ชั่วโมงเมื่อมีอาการ (สูงสุด 75 mg/วัน สำหรับอายุ 2-6 ปี, 150 mg/วัน สำหรับอายุ 6-12 ปี)",
+              "en": "Every 6 hours PRN (Max 75 mg/day for 2-6y, max 150 mg/day for 6-12y)",
+              "ru": "Каждые 6 часов при необходимости (макс. 75 мг/сутки для 2-6 лет, 150 мг/сутки для 6-12 лет)"
+            },
+            "administration": {
+              "th": "ห้ามใช้ในเด็กอายุต่ำกว่า 2 ปี เจือจางและฉีดช้าๆ กรณีให้ทาง IV",
+              "en": "Contraindicated in children under 2 years of age. Dilute and inject slowly for IV.",
+              "ru": "Противопоказано детям до 2 лет. Разводить и вводить медленно при ВВ."
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่มีข้อระบุเฉพาะเจาะจง", "en": "No specific guidance", "ru": "Нет специфических указаний" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่มีข้อระบุเฉพาะเจาะจง", "en": "No specific guidance", "ru": "Нет специфических указаний" }
+            },
+            "warnings": [
+              {
+                "type": "peds_contraindication",
+                "text": {
+                  "th": "ห้ามใช้ในเด็กอายุต่ำกว่า 2 ปี เนื่องจากเสี่ยงต่อภาวะกดการหายใจและการตอบสนองตอบโต้อย่างรุนแรง",
+                  "en": "Contraindicated in children under 2 years due to risks of respiratory depression and hyper-excitability.",
+                  "ru": "Противопоказано детям до 2 лет из-за риска угнетения дыхания и гипервозбудимости."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA OTC Label Drug Facts: Dimenhydrinate for Children",
+                "organization": "US FDA"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ranitidine",
+    "genericName": "Ranitidine",
+    "brandNames": ["Zantac"],
+    "activeIngredient": "Ranitidine hydrochloride",
+    "category": "H2 Blocker (Withdrawn)",
+    "isStrict": true,
+    "availableStrengths": [
+      {
+        "id": "ranitidine_25mg_ml",
+        "label": {
+          "th": "50 mg / 2 mL (25 mg/mL)",
+          "en": "50 mg / 2 mL (25 mg/mL)",
+          "ru": "50 мг / 2 мл (25 мг/мл)"
+        },
+        "mgPerMl": 25
+      }
+    ],
+    "indications": [
+      {
+        "id": "peptic_ulcer_prophylaxis_withdrawn",
+        "name": {
+          "th": "รักษาและป้องกันแผลในกระเพาะอาหาร (ถอนทะเบียนปี 2020) (Peptic Ulcer Prophylaxis - Withdrawn)",
+          "en": "Peptic Ulcer, Acid Suppression & GERD (Withdrawn 2020)",
+          "ru": "Язвенная болезнь ЖКТ и ГЭРБ (ОТЗВАН с рынка в 2020 г.)"
+        },
+        "protocols": [
+          {
+            "id": "ranitidine_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ (IV / IM) [ถอนทะเบียนยาแล้ว]", "en": "IV / IM [Historical reference only]", "ru": "ВВ / ВМ [Только для исторической справки]" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              },
+              {
+                "id": "crcl",
+                "label": { "th": "CrCl (มล./นาที)", "en": "CrCl (mL/min)", "ru": "КК (мл/мин)" },
+                "type": "number",
+                "min": 5,
+                "max": 150,
+                "defaultValue": 90
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "crcl < 50",
+                  "formula": "50",
+                  "explanationTemplate": "Renal impairment (CrCl < 50 mL/min): Interval increased to q18-24h (Max 50 mg/day)"
+                },
+                {
+                  "condition": "crcl >= 50",
+                  "formula": "50",
+                  "explanationTemplate": "Standard adult dose: 50 mg IV/IM q6-8h"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 50,
+            "maxDailyDoseMg": 150,
+            "frequency": {
+              "th": "ทุก 6 - 8 ชั่วโมง (ทุก 18 - 24 ชั่วโมง กรณีโรคไตบกพร่อง)",
+              "en": "Every 6 - 8 hours (Every 18 - 24 hours if CrCl < 50 mL/min)",
+              "ru": "Каждые 6 - 8 часов (Каждые 18 - 24 часа при КК < 50 мл/мин)"
+            },
+            "administration": {
+              "th": "คำเตือนวิกฤต: ยานี้ถูกถอนจากตลาดยาทั่วโลกปี 2020 เนื่องจากพบสารปนเปื้อนสารก่อมะเร็ง NDMA ห้ามจ่ายยานี้ให้ผู้ป่วยจริง!",
+              "en": "CRITICAL: WITHDRAWN globally in 2020 due to NDMA impurity (carcinogen). Do NOT administer to active patients.",
+              "ru": "КРИТИЧЕСКОЕ ПРЕДУПРЕЖДЕНИЕ: Препарат ОТЗВАН с рынка в 2020 году из-за обнаружения канцерогенной примеси NDMA. Не применять!"
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "CrCl < 50 mL/min: ให้ขนาดยา 50 mg ทุก 18-24 ชั่วโมง หรือรับประทาน 150 mg วันละครั้งเดียว", "en": "CrCl < 50 mL/min: 50 mg q18-24h or 150 mg PO once daily", "ru": "КК < 50 мл/мин: 50 мг каждые 18-24 ч или 150 мг внутрь 1 раз в сутки" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยาอย่างมีนัยสำคัญ", "en": "No major dose adjustment required", "ru": "Значительная коррекция не требуется" }
+            },
+            "warnings": [
+              {
+                "type": "global_withdrawal",
+                "text": {
+                  "th": "คำเตือนความปลอดภัยสูงสุด: ถอนทะเบียนและห้ามใช้รักษาโรคแล้ว เนื่องจากมีความเสี่ยงโรคมะเร็ง",
+                  "en": "SAFETY ALERT: Withdrawn from FDA and EMA markets due to NDMA carcinogen risks. Provided for historical lookup only.",
+                  "ru": "ВНИМАНИЕ: Препарат отозван FDA и EMA из-за риска примесей NDMA. Описание приведено в справочных целях."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Ranitidine Withdrawal Announcement (NDMA Alert)",
+                "organization": "US FDA"
+              }
+            ],
+            "verificationStatus": "insufficient_evidence",
+            "conflictingSources": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "famotidine",
+    "genericName": "Famotidine",
+    "brandNames": ["Pepcid"],
+    "activeIngredient": "Famotidine",
+    "category": "H2 Blocker",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "famotidine_10mg_ml",
+        "label": {
+          "th": "20 mg / 2 mL (10 mg/mL)",
+          "en": "20 mg / 2 mL (10 mg/mL)",
+          "ru": "20 мг / 2 мл (10 мг/мл)"
+        },
+        "mgPerMl": 10
+      }
+    ],
+    "indications": [
+      {
+        "id": "peptic_ulcer_gerd_bleeding",
+        "name": {
+          "th": "แผลในกระเพาะอาหาร / กรดไหลย้อน / เลือดออกทางเดินอาหารส่วนบน (Peptic Ulcer / GERD / Bleeding)",
+          "en": "Peptic Ulcer, GERD & Upper GI Bleeding",
+          "ru": "Язва ЖКТ, ГЭРБ и кровотечение из верхних отделов ЖКТ"
+        },
+        "protocols": [
+          {
+            "id": "famotidine_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV) / รับประทาน (PO)", "en": "Intravenous (IV) / Oral (PO)", "ru": "Внутривенно (ВВ) / Перорально (внутрь)" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              },
+              {
+                "id": "crcl",
+                "label": { "th": "CrCl (มล./นาที)", "en": "CrCl (mL/min)", "ru": "КК (мл/мин)" },
+                "type": "number",
+                "min": 5,
+                "max": 150,
+                "defaultValue": 90
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "crcl < 50",
+                  "formula": "10",
+                  "explanationTemplate": "Renal impairment (CrCl < 50 mL/min): Reduce dose by 50% to 10 mg q12h or 20 mg q24h"
+                },
+                {
+                  "condition": "crcl >= 50",
+                  "formula": "20",
+                  "explanationTemplate": "Standard adult dose: 20 mg IV q12h"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 20,
+            "maxDailyDoseMg": 40,
+            "frequency": {
+              "th": "ทุก 12 ชั่วโมง",
+              "en": "Every 12 hours",
+              "ru": "Каждые 12 часов"
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ อย่างน้อย 2 นาที หรือเจือจางเพื่อหยด IV infusion 15-30 นาที",
+              "en": "Slow IV push over at least 2 minutes or dilute for IV infusion over 15-30 minutes.",
+              "ru": "Медленная ВВ инъекция не менее 2 минут или инфузия в течение 15-30 минут."
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "CrCl < 50 mL/min: ลดขนาดยาลง 50% หรือขยายระยะเวลาเป็นทุก 24-36 ชั่วโมง", "en": "CrCl < 50 mL/min: Reduce dose by 50% or increase dosing interval to q24-36h", "ru": "КК < 50 мл/мин: снизить дозу на 50% или увеличить интервал до 24-36 ч" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "warnings": [
+              {
+                "type": "renal_accumulation",
+                "text": {
+                  "th": "ระวังการสะสมของยาในผู้ป่วยโรคไตเรื้อรัง อาจทำให้เกิดอาการสับสน ซึมเศร้า หรือภาพหลอน",
+                  "en": "Warning: Medication accumulation in renal impairment can cause confusion, depression, or hallucinations.",
+                  "ru": "Предупреждение: накопление препарата при почечной недостаточности вызывает спутанность сознания."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Pepcid (famotidine) Prescribing Information",
+                "organization": "US FDA"
+              },
+              {
+                "title": "Lexicomp Pediatric & Adult Clinical Drug Information",
+                "organization": "Lexicomp"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          },
+          {
+            "id": "famotidine_peds",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก (Pediatric)", "en": "Pediatric", "ru": "Дети" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / รับประทาน (IV / PO)", "en": "Intravenous / Oral (IV/PO)", "ru": "Внутривенно / Перорально" },
+            "ageRange": { "min": 1, "max": 16 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 5,
+                "max": 60,
+                "defaultValue": 15
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "Math.min(weight * 0.25, 20)",
+                  "explanationTemplate": "0.25 mg/kg/dose IV q12h (Max 20 mg/dose)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 20,
+            "maxDailyDoseMg": 40,
+            "frequency": {
+              "th": "ทุก 12 ชั่วโมง",
+              "en": "Every 12 hours",
+              "ru": "Каждые 12 часов"
+            },
+            "administration": {
+              "th": "ฉีด IV ช้าๆ เกิน 2 นาที หรือให้ทาง PO 0.5-1 mg/kg/วัน แบ่ง BID (สูงสุด 40 mg/วัน)",
+              "en": "Slow IV injection over 2 minutes or PO 0.5-1 mg/kg/day divided BID (Max 40 mg/day).",
+              "ru": "Медленное ВВ введение 2 минуты или перорально 0.5-1 мг/кг/сутки в 2 приема (макс. 40 мг/сутки)."
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "ลดขนาดโดสลง 50% หากมีภาวะไตบกพร่องรุนแรง", "en": "Reduce dose by 50% in severe renal impairment", "ru": "Снизить дозу на 50% при тяжелой почечной недостаточности" }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "warnings": [
+              {
+                "type": "peds_max_dose",
+                "text": {
+                  "th": "คำนวณตามน้ำหนัก 0.25 mg/kg ต่อโดส IV (สูงสุดไม่เกิน 20 mgต่อโดส)",
+                  "en": "Dose calculated at 0.25 mg/kg (Max single IV dose 20 mg).",
+                  "ru": "Расчет 0.25 мг/кг на дозу ВВ (максимум 20 мг на дозу)."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "Lexicomp Pediatric Drug Information",
+                "organization": "Lexicomp"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "omeprazole",
+    "genericName": "Omeprazole",
+    "brandNames": ["Prilosec", "Losec"],
+    "activeIngredient": "Omeprazole sodium",
+    "category": "Proton Pump Inhibitor",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "omeprazole_4mg_ml",
+        "label": {
+          "th": "40 mg / 10 mL (4 mg/mL reconstituted)",
+          "en": "40 mg / 10 mL (4 mg/mL reconstituted)",
+          "ru": "40 мг / 10 мл (4 мг/мл восстановленный)"
+        },
+        "mgPerMl": 4
+      }
+    ],
+    "indications": [
+      {
+        "id": "severe_gi_bleeding_acid_suppression",
+        "name": {
+          "th": "เลือดออกรุนแรงในทางเดินอาหาร / ยับยั้งกรดรุนแรง (Severe Upper GI Bleeding / Acid Suppression)",
+          "en": "Severe Upper GI Bleeding & Acid Suppression",
+          "ru": "Тяжелое ЖК-кровотечение и антисекреторная терапия"
+        },
+        "protocols": [
+          {
+            "id": "omeprazole_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV) / รับประทาน (PO)", "en": "Intravenous (IV) / Oral (PO)", "ru": "Внутривенно (ВВ) / Перорально (внутрь)" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "40",
+                  "explanationTemplate": "Standard adult dose: 40 mg IV once daily. Severe bleeding: 80 mg IV bolus, then 8 mg/h infusion."
+                }
+              ]
+            },
+            "maxSingleDoseMg": 80,
+            "maxDailyDoseMg": 80,
+            "frequency": {
+              "th": "วันละ 1 ครั้ง (หรือหยดต่อเนื่องอัตรา 8 mg/ชั่วโมง กรณีเลือดออกรุนแรง)",
+              "en": "Once daily (or 8 mg/h continuous infusion for severe bleeding)",
+              "ru": "1 раз в сутки (или непрерывная инфузия 8 мг/ч при тяжелом кровотечении)"
+            },
+            "administration": {
+              "th": "สำหรับ IV ทั่วไปละลายได้ความเข้มข้น 4 mg/mL หยดช้าๆ นาน 20-30 นาที กรณีเลือดออกรุนแรงให้ฉีด 80 mg เป็นเข็มแรก",
+              "en": "Reconstituted to 4 mg/mL. Infuse over 20-30 minutes. Severe bleeding requires 80 mg loading bolus.",
+              "ru": "Разводится до 4 мг/мл. ВВ инфузия за 20-30 минут. При кровотечении — 80 мг болюс."
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ตับบกพร่องรุนแรง (Cirrhosis): แนะนำขนาดยาสูงสุดไม่เกิน 20 mg/วัน", "en": "Severe hepatic impairment: Max recommended dose is 20 mg/day", "ru": "Тяжелая печеночная недостаточность: максимальная доза 20 мг/сутки" }
+            },
+            "warnings": [
+              {
+                "type": "reconstitution_compatibility",
+                "text": {
+                  "th": "ข้อควรระวัง: ต้องบริหารยาหลังผสมสารละลายทันทีเพื่อความคงตัวสูงสุดของตัวยา",
+                  "en": "Note: Administer immediately after reconstitution for maximum chemical stability.",
+                  "ru": "Примечание: вводить сразу после восстановления раствора для стабильности."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "EMA/FDA Omeprazole Product Labels",
+                "organization": "FDA / EMA"
+              },
+              {
+                "title": "British National Formulary (BNF)",
+                "organization": "BNF"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          },
+          {
+            "id": "omeprazole_peds_oral",
+            "population": "pediatric",
+            "populationLabel": { "th": "เด็ก >= 1 ปี (Pediatric >= 1y)", "en": "Pediatric (>= 1y)", "ru": "Дети (>= 1 года)" },
+            "route": "PO",
+            "routeLabel": { "th": "ยารับประทาน (PO)", "en": "Oral (PO)", "ru": "Перорально (внутрь)" },
+            "ageRange": { "min": 1, "max": 17 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 5,
+                "max": 80,
+                "defaultValue": 15
+              }
+            ],
+            "doseType": "weight_based",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "weight < 10",
+                  "formula": "5",
+                  "explanationTemplate": "Weight < 10 kg: Standard oral dose is 5 mg once daily"
+                },
+                {
+                  "condition": "weight >= 10 && weight <= 20",
+                  "formula": "10",
+                  "explanationTemplate": "Weight 10-20 kg: Standard oral dose is 10 mg once daily"
+                },
+                {
+                  "condition": "weight > 20",
+                  "formula": "20",
+                  "explanationTemplate": "Weight > 20 kg: Standard oral dose is 20 mg once daily"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 20,
+            "maxDailyDoseMg": 20,
+            "frequency": {
+              "th": "วันละ 1 ครั้ง (ตอนเช้าท้องว่าง)",
+              "en": "Once daily in the morning on empty stomach",
+              "ru": "1 раз в сутки утром натощак"
+            },
+            "administration": {
+              "th": "รับประทานยาน้ำหรือเปิดแคปซูลผสมน้ำผลไม้ที่มีฤทธิ์เป็นกรด ห้ามเคี้ยวเม็ดยาเคมี (pellets)",
+              "en": "PO. Capsule pellets should not be crushed or chewed.",
+              "ru": "Перорально. Микросферы из капсул нельзя раздавливать или разжевывать."
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ตับบกพร่องรุนแรง: ขนาดยาลดลงอย่างมากควรปรึกษาแพทย์เฉพาะทาง", "en": "Severe hepatic impairment: Max recommended dose is significantly reduced", "ru": "Тяжелая печеночная недостаточность: максимальная доза должна быть снижена" }
+            },
+            "warnings": [
+              {
+                "type": "off_label_iv_peds",
+                "text": {
+                  "th": "การให้ยาทางเส้นเลือดดำ (IV) ในเด็ก (0.5-1 mg/kg/วัน สูงสุด 40 mg) จัดเป็น Off-label และแนะนำโดย BNF child เท่านั้น",
+                  "en": "Pediatric IV use (0.5-1 mg/kg QD, Max 40 mg) is considered Off-Label and only described in pediatric guidelines like BNF child.",
+                  "ru": "ВВ введение у детей (0.5-1 мг/кг в сутки, макс. 40 мг) является Off-Label (рекомендовано в BNF child)."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "BNF for Children: Omeprazole",
+                "organization": "NICE"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pantoprazole",
+    "genericName": "Pantoprazole",
+    "brandNames": ["Protonix"],
+    "activeIngredient": "Pantoprazole sodium",
+    "category": "Proton Pump Inhibitor",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "pantoprazole_40mg",
+        "label": {
+          "th": "40 mg ผงแห้งเตรียมผสมน้ำ (4 mg/mL reconstituted)",
+          "en": "40 mg vial (reconstituted to 4 mg/mL)",
+          "ru": "40 мг флакон (4 мг/мл после восстановления)"
+        },
+        "mgPerMl": 4
+      }
+    ],
+    "indications": [
+      {
+        "id": "peptic_ulcer_gerd_bleeding_panto",
+        "name": {
+          "th": "แผลในกระเพาะอาหาร / กรดไหลย้อน / เลือดออกในทางเดินอาหาร (GERD / Bleeding / Ulcer)",
+          "en": "GERD, Peptic Ulcer Bleeding & Prophylaxis",
+          "ru": "ГЭРБ, кровотечение из язвы ЖКТ и профилактика стрессовых язв"
+        },
+        "protocols": [
+          {
+            "id": "pantoprazole_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ (IV) / รับประทาน (PO)", "en": "Intravenous (IV) / Oral (PO)", "ru": "Внутривенно (ВВ) / Перорально (внутрь)" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "40",
+                  "explanationTemplate": "Standard adult dose: 40 mg IV/PO once daily. Severe bleeding: 80 mg bolus, then 8 mg/h."
+                }
+              ]
+            },
+            "maxSingleDoseMg": 80,
+            "maxDailyDoseMg": 80,
+            "frequency": {
+              "th": "วันละ 1 ครั้ง (หรือหยดต่อเนื่องเพื่อห้ามเลือด 8 mg/ชั่วโมง นาน 72 ชั่วโมง)",
+              "en": "Once daily (or 8 mg/h continuous infusion for 72h for severe upper GI bleed)",
+              "ru": "1 раз в сутки (или непрерывная инфузия 8 мг/ч в течение 72 ч при ЖК-кровотечении)"
+            },
+            "administration": {
+              "th": "ละลายยาด้วยน้ำเกลือความเข้มข้นสูงสุด 4 mg/mL และหยดช้าๆ นาน 15 นาที",
+              "en": "Reconstituted to 4 mg/mL and infused over 15 minutes.",
+              "ru": "Растворять до 4 мг/мл и вводить в виде инфузии в течение 15 минут."
+            },
+            "renalAdjustment": {
+              "required": false,
+              "note": { "th": "ไม่ต้องปรับขนาดยา", "en": "No renal dose adjustment required", "ru": "Коррекция дозы не требуется" }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ตับบกพร่องรุนแรง: ขนาดยาสูงสุดไม่เกิน 20 mg ต่อวัน หรือ 20 mg วันเว้นวัน", "en": "Severe hepatic impairment: Max 20 mg/day or 20 mg every other day", "ru": "Тяжелая печеночная недостаточность: макс. 20 мг/сутки или 20 мг через день" }
+            },
+            "warnings": [
+              {
+                "type": "peds_dose_reported",
+                "text": {
+                  "th": "เด็กอายุ >= 5 ปี สามารถให้ยาทาง PO ขนาด 20-40 mg ตามน้ำหนักตัว การให้ยาทาง IV ในเด็ก (0.8-1 mg/kg) ยังไม่มีข้อบ่งชี้ทางมาตรฐานทั่วไป",
+                  "en": "Pediatric oral dose is weight-based (>=5 yrs: 15-40 kg is 20 mg; >40 kg is 40 mg). Pediatric IV (0.8-1 mg/kg, Max 40 mg) is mostly off-label.",
+                  "ru": "Пероральная доза у детей с 5 лет: 15-40 кг — 20 мг, >40 кг — 40 мг в сутки. ВВ введение у детей (0.8-1 мг/кг, макс. 40 мг) преимущественно off-label."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Protonix Label / Prescribing Information",
+                "organization": "US FDA"
+              },
+              {
+                "title": "EMA Pantoprazole Assessment SPC",
+                "organization": "EMA"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "diclofenac",
+    "genericName": "Diclofenac",
+    "brandNames": ["Voltarol"],
+    "activeIngredient": "Diclofenac sodium",
+    "category": "NSAID",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "diclofenac_25mg_ml",
+        "label": {
+          "th": "75 mg / 3 mL (25 mg/mL)",
+          "en": "75 mg / 3 mL (25 mg/mL)",
+          "ru": "75 мг / 3 мл (25 мг/мл)"
+        },
+        "mgPerMl": 25
+      }
+    ],
+    "indications": [
+      {
+        "id": "acute_pain_colic",
+        "name": {
+          "th": "อาการปวดเฉียบพลัน / อาการปวดเกร็งทางเดินปัสสาวะ (Acute Pain / Renal Colic)",
+          "en": "Acute Pain, Renal Colic & Postoperative Pain",
+          "ru": "Острая боль, почечная колика и послеоперационная боль"
+        },
+        "protocols": [
+          {
+            "id": "diclofenac_adult_im",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IM",
+            "routeLabel": { "th": "ฉีดเข้ากล้ามเนื้อสะโพกส่วนลึก (Deep IM)", "en": "Deep Intramuscular (IM)", "ru": "Глубоко внутримышечно (ВМ)" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "75",
+                  "explanationTemplate": "Standard adult dose: 75 mg deep intragluteal injection once or twice daily (Max 150 mg/day)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 75,
+            "maxDailyDoseMg": 150,
+            "frequency": {
+              "th": "วันละ 1-2 ครั้ง สูงสุดไม่เกิน 2 วัน และควรเปลี่ยนเป็นยารับประทาน",
+              "en": "Once or twice daily for a maximum of 2 days, then transition to oral.",
+              "ru": "1-2 раза в сутки в течение максимум 2 дней, затем переход на пероральный прием."
+            },
+            "administration": {
+              "th": "ฉีดเข้ากล้ามเนื้อสะโพกส่วนลึก (Deep IM intragluteal) เพื่อป้องกันเนื้อเยื่อเสียหาย ทวารไม่แนะนำในเด็กอายุต่ำกว่า 12 ปี",
+              "en": "Deep intragluteal IM injection to avoid local tissue damage. IM not recommended in pediatric populations.",
+              "ru": "Глубоко в ягодичную мышцу во избежание повреждения тканей. ВМ введение детям не рекомендуется."
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "ข้อห้ามใช้เด็ดขาด: ห้ามใช้ยาในภาวะไตล้มเหลวรุนแรง", "en": "CONTRAINDICATED in severe renal failure.", "ru": "ПРОТИВОПОКАЗАНО при тяжелой почечной недостаточности." }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ข้อห้ามใช้เด็ดขาด: ห้ามใช้ในผู้ป่วยตับทำงานบกพร่องขั้นรุนแรง", "en": "CONTRAINDICATED in severe hepatic impairment.", "ru": "ПРОТИВОПОКАЗАНО при тяжелой печеночной недостаточности." }
+            },
+            "warnings": [
+              {
+                "type": "peds_im_warning",
+                "text": {
+                  "th": "คำเตือนในเด็ก: การให้ยาทางกล้ามเนื้อ (IM) ไม่แนะนำสำหรับเด็กอายุต่ำกว่า 12-18 ปี สำหรับแบบรับประทานในเด็กอายุ > 1 ปี ขนาด 0.5-1 mg/kg วันละ 2-3 ครั้ง (สูงสุด 3 mg/kg/วัน หรือ 150 mg/วัน)",
+                  "en": "Pediatric Warning: IM route is not recommended in children <12-18 years. Oral dose for children >1 year is 0.5-1 mg/kg BID-TID (Max 3 mg/kg/day or 150 mg/day).",
+                  "ru": "Предупреждение у детей: ВМ введение не рекомендуется детям до 12-18 лет. Внутрь детям старше 1 года: 0.5-1 мг/кг 2-3 раза в сутки (макс. 3 мг/кг/сут или 150 мг/сут)."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "EMA Voltarol SPC / Prescribing Information",
+                "organization": "EMA"
+              },
+              {
+                "title": "British National Formulary (BNF)",
+                "organization": "BNF"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "parecoxib",
+    "genericName": "Parecoxib",
+    "brandNames": ["Dynastat"],
+    "activeIngredient": "Parecoxib sodium",
+    "category": "NSAID / COX-2 Inhibitor",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "parecoxib_20mg_ml",
+        "label": {
+          "th": "40 mg ผงแห้งเตรียมผสมน้ำ (20 mg/mL after 2 mL dilution)",
+          "en": "40 mg vial reconstituted with 2 mL NS (20 mg/mL)",
+          "ru": "40 мг флакон, восстановленный 2 мл физраствора (20 мг/мл)"
+        },
+        "mgPerMl": 20
+      }
+    ],
+    "indications": [
+      {
+        "id": "postoperative_pain",
+        "name": {
+          "th": "ระงับปวดหลังผ่าตัดระยะสั้น (Short-term Postoperative Pain)",
+          "en": "Short-term Management of Postoperative Pain",
+          "ru": "Кратковременное купирование послеоперационной боли"
+        },
+        "protocols": [
+          {
+            "id": "parecoxib_adult",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (Adult)", "en": "Adult", "ru": "Взрослые" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ (IV / IM)", "en": "Intravenous / Intramuscular (IV/IM)", "ru": "Внутривенно / Внутримышечно" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 35,
+                "max": 200,
+                "defaultValue": 70
+              },
+              {
+                "id": "crcl",
+                "label": { "th": "CrCl (มล./นาที)", "en": "CrCl (mL/min)", "ru": "КК (мл/мин)" },
+                "type": "number",
+                "min": 5,
+                "max": 150,
+                "defaultValue": 90
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "40",
+                  "explanationTemplate": "Standard adult dose: 40 mg single loading dose, then 20-40 mg q6-12h PRN (Max 80 mg/day)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 40,
+            "maxDailyDoseMg": 80,
+            "frequency": {
+              "th": "ทุก 6 ถึง 12 ชั่วโมง เมื่อมีอาการปวด",
+              "en": "Every 6 to 12 hours PRN",
+              "ru": "Каждые 6 - 12 часов при боли"
+            },
+            "administration": {
+              "th": "ผสมผงแห้ง 40 mg ด้วยสารละลาย NS ปริมาตร 2 mL (ความเข้มข้นหลังผสม 20 mg/mL) ฉีดบริหารแบบ IV push ช้าๆ หรือ IM ทันที",
+              "en": "Reconstitute 40 mg powder with 2 mL NS (20 mg/mL). Give as rapid or slow IV push or IM injection.",
+              "ru": "Растворить 40 мг порошка в 2 мл физраствора (20 мг/мл). Вводить в виде ВВ болюса или ВМ."
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "โรคไตเสื่อมรุนแรง (CrCl < 30 mL/min): จัดเป็นข้อห้ามใช้เนื่องจากเสี่ยงไตวายเฉียบพลัน", "en": "Severe Renal Failure (CrCl < 30 mL/min): CONTRAINDICATED.", "ru": "Тяжелая почечная недостаточность (КК < 30 мл/мин): ПРОТИВОПОКАЗАНО." }
+            },
+            "hepaticAdjustment": {
+              "required": true,
+              "note": { "th": "ตับบกพร่องปานกลาง (Child-Pugh B): ควรเริ่มขนาด 20 mg และจำกัดขนาดยาสูงสุดไม่เกิน 40 mg/วัน, ตับบกพร่องรุนแรง (Child-Pugh C): ห้ามใช้", "en": "Moderate hepatic impairment (Child-Pugh B): Start with 20 mg, max 40 mg/day. Severe impairment (Child-Pugh C): CONTRAINDICATED.", "ru": "Средняя печеночная недостаточность (Child-Pugh B): начать с 20 мг, макс. 40 мг/сут. Тяжелая (Child-Pugh C): ПРОТИВОПОКАЗАНО." }
+            },
+            "warnings": [
+              {
+                "type": "pediatric_contraindication",
+                "text": {
+                  "th": "ความปลอดภัยในเด็ก: ต่ำกว่า 18 ปี ข้อมูลด้านความปลอดภัยและประสิทธิภาพยังมีไม่เพียงพอ (ห้ามใช้)",
+                  "en": "Pediatric Restriction: Safety and efficacy have not been established in patients under 18 years of age.",
+                  "ru": "Применение у детей: безопасность и эффективность у пациентов до 18 лет не установлены (не применять)."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "EMA Dynastat SPC / Product Information",
+                "organization": "EMA"
+              },
+              {
+                "title": "Thai FDA Register",
+                "organization": "Thai FDA"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ketorolac",
+    "genericName": "Ketorolac",
+    "brandNames": ["Toradol"],
+    "activeIngredient": "Ketorolac tromethamine",
+    "category": "NSAID",
+    "isStrict": false,
+    "availableStrengths": [
+      {
+        "id": "ketorolac_30mg_ml",
+        "label": {
+          "th": "30 mg / 1 mL",
+          "en": "30 mg / 1 mL",
+          "ru": "30 мг / 1 мл"
+        },
+        "mgPerMl": 30
+      }
+    ],
+    "indications": [
+      {
+        "id": "acute_severe_pain_ketorolac",
+        "name": {
+          "th": "ระงับปวดเฉียบพลันระดับปานกลางถึงรุนแรงระยะสั้น (Short-term Moderately Severe Pain)",
+          "en": "Short-term Moderately Severe Acute Pain (Max 5 Days)",
+          "ru": "Кратковременное купирование умеренно сильной острой боли (макс. 5 дней)"
+        },
+        "protocols": [
+          {
+            "id": "ketorolac_adult_under65_and_50kg",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่ (< 65 ปี และ >= 50 กก.)", "en": "Adult (<65y and >=50 kg)", "ru": "Взрослые (<65 лет и >=50 кг)" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ (IV / IM)", "en": "IV / IM", "ru": "ВВ / ВМ" },
+            "ageRange": { "min": 18, "max": 64 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 50,
+                "max": 200,
+                "defaultValue": 70
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "30",
+                  "explanationTemplate": "Standard adult dose: 30 mg IV/IM q6h PRN (Max 120 mg/day)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 30,
+            "maxDailyDoseMg": 120,
+            "frequency": {
+              "th": "ทุก 6 ชั่วโมง เมื่อมีอาการปวด (ระยะเวลารักษาทุกประเภทรวมกันห้ามเกิน 5 วัน)",
+              "en": "Every 6 hours PRN (Max cumulative duration of 5 days across all routes).",
+              "ru": "Каждые 6 часов при боли (максимальная суммарная длительность лечения — 5 дней)."
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ อย่างน้อย 15 วินาที หรือ ฉีด IM ส่วนลึกช้าๆ",
+              "en": "Slow IV push over at least 15 seconds or deep IM injection slowly.",
+              "ru": "ВВ струйно медленно не менее 15 сек или глубоко ВМ медленно."
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "โรคไตเสื่อมขั้นสูง: ห้ามใช้ยาเด็ดขาด, โรคไตเสื่อมขั้นปานกลาง: ต้องปรับลดขนาด (สูงสุดไม่เกิน 60 mg/วัน)", "en": "Advanced renal impairment: CONTRAINDICATED. Moderate renal impairment: Dose reduction required (Max 60 mg/day).", "ru": "Тяжелая почечная недостаточность: ПРОТИВОПОКАЗАНО. Средняя почечная недостаточность: снизить дозу (макс. 60 мг/сут)." }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ใช้อย่างระมัดระวังเป็นพิเศษในโรคตับ", "en": "Use with caution in hepatic impairment", "ru": "С осторожностью при печеночной недостаточности" }
+            },
+            "warnings": [
+              {
+                "type": "gastrointestinal_bleeding",
+                "text": {
+                  "th": "คำเตือนวิกฤต: ยานี้เสี่ยงต่อเลือดออกในกระเพาะอาหารอย่างรุนแรงและไตวายเฉียบพลัน ห้ามใช้ยารักษานานเกิน 5 วันเด็ดขาด",
+                  "en": "WARNING: Serious risk of gastrointestinal bleeding and acute kidney injury. Limit treatment to max 5 days.",
+                  "ru": "ПРЕДУПРЕЖДЕНИЕ: Высокий риск ЖКТ-кровотечений и ОПН. Ограничить лечение максимум 5 днями."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Toradol Label / Prescribing Information",
+                "organization": "US FDA"
+              },
+              {
+                "title": "Lexicomp Clinical Drug Reference",
+                "organization": "Lexicomp"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          },
+          {
+            "id": "ketorolac_adult_senior_or_low_weight",
+            "population": "adult",
+            "populationLabel": { "th": "ผู้ใหญ่สูงอายุ / น้ำหนักน้อย / ไตบกพร่อง (Elderly / Low Weight / Renal Impairment)", "en": "Elderly (>=65y), Low Weight (<50 kg) or Renal Impairment", "ru": "Пожилые (>=65 лет), малый вес (<50 кг) или почечная недостаточность" },
+            "route": "IV",
+            "routeLabel": { "th": "ฉีดเข้าเส้นเลือดดำ / กล้ามเนื้อ (IV / IM)", "en": "IV / IM", "ru": "ВВ / ВМ" },
+            "ageRange": { "min": 18 },
+            "requiredInputs": [
+              {
+                "id": "weight",
+                "label": { "th": "น้ำหนัก (กก.)", "en": "Weight (kg)", "ru": "Вес (кг)" },
+                "type": "number",
+                "min": 30,
+                "max": 150,
+                "defaultValue": 45
+              }
+            ],
+            "doseType": "fixed",
+            "calculation": {
+              "unit": "mg",
+              "rules": [
+                {
+                  "condition": "true",
+                  "formula": "15",
+                  "explanationTemplate": "Reduced dose for high risk patients: 15 mg IV/IM q6h PRN (Max 60 mg/day)"
+                }
+              ]
+            },
+            "maxSingleDoseMg": 15,
+            "maxDailyDoseMg": 60,
+            "frequency": {
+              "th": "ทุก 6 ชั่วโมง เมื่อมีอาการปวด (สูงสุดไม่เกิน 60 mg/วัน, ระยะเวลาสูงสุด 5 วัน)",
+              "en": "Every 6 hours PRN (Max 60 mg/day, limit treatment to max 5 days).",
+              "ru": "Каждые 6 часов при боли (макс. 60 мг/сутки, максимум 5 дней)."
+            },
+            "administration": {
+              "th": "ฉีด IV push ช้าๆ หรือ IM ลึกๆ ช้าๆ",
+              "en": "Slow IV push or deep IM injection slowly.",
+              "ru": "Медленно ВВ или глубоко ВМ медленно."
+            },
+            "renalAdjustment": {
+              "required": true,
+              "note": { "th": "กลุ่มผู้ป่วยโรคไตเสื่อมขั้นปานกลางใช้ขนาดยานี้เป็นขนาดสูงสุดแล้ว (ห้ามเกิน 60 mg/วัน)", "en": "This is already the reduced dose for moderate renal impairment (Do not exceed 60 mg/day). CONTRAINDICATED in advanced renal failure.", "ru": "Это уже сниженная доза для почечной недостаточности (не более 60 мг/сут). Противопоказано при тяжелой почечной недостаточности." }
+            },
+            "hepaticAdjustment": {
+              "required": false,
+              "note": { "th": "ใช้อย่างระมัดระวังเป็นพิเศษ", "en": "Use with caution", "ru": "С осторожностью" }
+            },
+            "warnings": [
+              {
+                "type": "high_risk_groups",
+                "text": {
+                  "th": "ระวังการเพิ่มขึ้นของผลข้างเคียงต่อระบบไตและเลือดออกในกระเพาะอาหารในกลุ่มผู้สูงอายุและผู้ป่วยโรคไต",
+                  "en": "Highly elevated risk of acute kidney injury and gastrointestinal hemorrhage in elderly and renal patients.",
+                  "ru": "Значительно повышен риск ОПН и ЖКТ-кровотечений у пожилых людей и пациентов с почечной недостаточностью."
+                }
+              }
+            ],
+            "sources": [
+              {
+                "title": "FDA Toradol Label / Prescribing Information",
+                "organization": "US FDA"
+              }
+            ],
+            "verificationStatus": "partially_verified"
+          }
+        ]
+      }
+    ]
+  }
+]
