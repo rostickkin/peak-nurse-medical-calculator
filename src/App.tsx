@@ -265,9 +265,7 @@ export default function App() {
   const currentLang = i18n.language;
   
   // App Core States
-  const [agreed, setAgreed] = useState<boolean>(() => {
-    return localStorage.getItem('peak_nurse_agreed') === 'true';
-  });
+  const [agreed, setAgreed] = useState<boolean>(false);
   const [search, setSearch] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [homeTab, setHomeTab] = useState<'recent' | 'favorites'>('recent');
@@ -312,7 +310,6 @@ export default function App() {
 
   // Persist Agreement
   const handleAgree = () => {
-    localStorage.setItem('peak_nurse_agreed', 'true');
     setAgreed(true);
   };
 
