@@ -1,0 +1,75 @@
+[
+  {
+    "id": "paracetamol",
+    "name": {
+      "th": "พาราเซตามอล (Paracetamol)",
+      "en": "Paracetamol",
+      "ru": "Парацетамол"
+    },
+    "isStrict": false,
+    "inputs": [
+      {
+        "id": "weight",
+        "label": {
+          "th": "น้ำหนัก (กก.)",
+          "en": "Weight (kg)",
+          "ru": "Вес (кг)"
+        },
+        "type": "number",
+        "min": 1,
+        "max": 200
+      }
+    ],
+    "calculation": {
+      "unit": "mg",
+      "rules": [
+        {
+          "condition": "true",
+          "formula": "weight * 15"
+        }
+      ]
+    }
+  },
+  {
+    "id": "morphine",
+    "name": {
+      "th": "มอร์ฟีน (Morphine)",
+      "en": "Morphine",
+      "ru": "Морфин"
+    },
+    "isStrict": true,
+    "inputs": [
+      {
+        "id": "weight",
+        "label": {
+          "th": "น้ำหนัก (กก.)",
+          "en": "Weight (kg)",
+          "ru": "Вес (кг)"
+        },
+        "type": "number"
+      },
+      {
+        "id": "age",
+        "label": {
+          "th": "อายุ (ปี)",
+          "en": "Age (years)",
+          "ru": "Возраст (лет)"
+        },
+        "type": "number"
+      }
+    ],
+    "calculation": {
+      "unit": "mg",
+      "rules": [
+        {
+          "condition": "age < 18",
+          "formula": "weight * 0.1"
+        },
+        {
+          "condition": "age >= 18",
+          "formula": "weight * 0.15"
+        }
+      ]
+    }
+  }
+]

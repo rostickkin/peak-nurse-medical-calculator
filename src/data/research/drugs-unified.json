@@ -122,7 +122,7 @@
                 "organization": "Thai FDA"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "ondansetron_ponv_peds",
@@ -211,21 +211,11 @@
                 "organization": "NICE"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Adult 4 mg IV single dose and pediatric 0.1 mg/kg IV (max 4 mg) for PONV verified against FDA Zofran label. 2 mg/mL ampoule widely available in Thai hospital formularies."
-    }
+    ]
   },
   {
     "id": "metoclopramide",
@@ -363,7 +353,7 @@
                 "organization": "EMA"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "metoclopramide_peds",
@@ -452,21 +442,11 @@
                 "organization": "EMA"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "EMA Article 31 referral: max 5 days, max 0.5 mg/kg/day pediatric, max 30 mg/day adult. 5 mg/mL ampoule available in Thailand."
-    }
+    ]
   },
   {
     "id": "hyoscine_butylbromide",
@@ -587,7 +567,7 @@
                 "organization": "Thai Ministry of Public Health"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "buscopan_peds_6to12",
@@ -676,21 +656,11 @@
                 "organization": "NICE"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Adult dose 20 mg IM/IV/SC verified per MHRA Buscopan label. Pediatric protocol covers PO only; IV/IM pediatric route not represented but is in BNFC. Buscopan 20 mg/mL widely available in Thailand."
-    }
+    ]
   },
   {
     "id": "dimenhydrinate",
@@ -811,7 +781,7 @@
                 "organization": "Lexicomp"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "dimenhydrinate_peds",
@@ -900,21 +870,11 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Adult and pediatric doses verified per FDA OTC label and BNFC. 50 mg/mL ampoule available in Thailand."
-    }
+    ]
   },
   {
     "id": "ranitidine",
@@ -1048,27 +1008,12 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "rejected",
-            "conflictingSources": true,
-            "verificationNote": "Drug withdrawn globally in 2020 due to NDMA carcinogen impurity. NOT for active patient administration. Retained for historical reference only."
+            "verificationStatus": "insufficient_evidence",
+            "conflictingSources": true
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "REJECTED",
-      "thailandStatus": "NOT_APPLICABLE",
-      "productionReady": false,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Drug globally withdrawn 2020 (NDMA carcinogen). Must not be administered to patients."
-      ],
-      "majorChanges": [
-        "verificationStatus set to 'rejected'; marked as historical reference only."
-      ],
-      "notes": "Ranitidine withdrawn by FDA (April 2020), EMA, and Thai FDA. All protocols marked REJECTED. Application should remove from active medication list or clearly display withdrawal warning before any selection."
-    }
+    ]
   },
   {
     "id": "famotidine",
@@ -1206,7 +1151,7 @@
                 "organization": "Lexicomp"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "famotidine_peds",
@@ -1259,9 +1204,9 @@
               "ru": "Каждые 12 часов"
             },
             "administration": {
-              "th": "ฉีด IV ช้าๆ 2 นาที ขนาดยา IV: 0.25 mg/kg/dose ทุก 12 ชั่วโมง (สูงสุด 20 mg/dose, 40 mg/วัน) สำหรับ PO ในเด็ก ≥1 ปี: 0.5-1 mg/kg/วัน แบ่ง BID (สูงสุด 40 mg/วัน)",
-              "en": "Slow IV injection over 2 minutes. IV dose: 0.25 mg/kg/dose q12h (Max 20 mg/dose, 40 mg/day). For PO dosing in pediatric patients ≥1y: 0.5-1 mg/kg/day divided BID (Max 40 mg/day).",
-              "ru": "Медленное ВВ введение 2 мин. ВВ доза: 0.25 мг/кг/дозу q12h (макс 20 мг/дозу, 40 мг/сут). Внутрь у детей ≥1 года: 0.5-1 мг/кг/сут в 2 приема (макс 40 мг/сут)."
+              "th": "ฉีด IV ช้าๆ เกิน 2 นาที หรือให้ทาง PO 0.5-1 mg/kg/วัน แบ่ง BID (สูงสุด 40 mg/วัน)",
+              "en": "Slow IV injection over 2 minutes or PO 0.5-1 mg/kg/day divided BID (Max 40 mg/day).",
+              "ru": "Медленное ВВ введение 2 минуты или перорально 0.5-1 мг/кг/сутки в 2 приема (макс. 40 мг/сутки)."
             },
             "renalAdjustment": {
               "required": true,
@@ -1295,25 +1240,11 @@
                 "organization": "Lexicomp"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Pediatric IV administration note conflated IV and PO dose ranges — corrected."
-      ],
-      "majorChanges": [
-        "Pediatric administration note clarified to separate IV dose (0.25 mg/kg/dose) from PO dose (0.5-1 mg/kg/day)."
-      ],
-      "notes": "Adult and pediatric IV doses verified per FDA Pepcid Injection label. 10 mg/mL ampoule available in Thailand."
-    }
+    ]
   },
   {
     "id": "omeprazole",
@@ -1435,7 +1366,7 @@
                 "organization": "BNF"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "omeprazole_peds_oral",
@@ -1534,21 +1465,11 @@
                 "organization": "NICE"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Adult IV dosing and pediatric PO weight-based dosing verified per FDA/EMA/BNFC. 40 mg vial for IV reconstitution available in Thailand."
-    }
+    ]
   },
   {
     "id": "pantoprazole",
@@ -1669,23 +1590,11 @@
                 "organization": "EMA"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "No separate pediatric protocol — pediatric IV use is off-label per US label."
-      ],
-      "majorChanges": [],
-      "notes": "Adult dose 40 mg IV QD verified per FDA Protonix label. Pediatric dosing not represented; should be added if needed. 40 mg vial available in Thailand."
-    }
+    ]
   },
   {
     "id": "diclofenac",
@@ -1806,21 +1715,11 @@
                 "organization": "BNF"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Adult IM 75 mg deep intragluteal verified per EMA Voltarol SPC. IV route intentionally omitted (withdrawn in EU/USA due to thrombosis risk). 75 mg/3 mL ampoule available in Thailand."
-    }
+    ]
   },
   {
     "id": "parecoxib",
@@ -1953,21 +1852,11 @@
                 "organization": "Thai FDA"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per EMA Dynastat SPC. 40 mg vial for reconstitution available in Thailand."
-    }
+    ]
   },
   {
     "id": "ketorolac",
@@ -2089,7 +1978,7 @@
                 "organization": "Lexicomp"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "ketorolac_adult_senior_or_low_weight",
@@ -2177,21 +2066,11 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per FDA Toradol label. 30 mg/mL ampoule available in Thailand. Cumulative max 5 days across all routes must be enforced at application level."
-    }
+    ]
   },
   {
     "id": "gentamicin",
@@ -2376,7 +2255,7 @@
               ]
             },
             "maxSingleDoseMg": 240,
-            "maxDailyDoseMg": null,
+            "maxDailyDoseMg": 720,
             "frequency": {
               "th": "ขึ้นอยู่กับการทำงานของไต (ดูสูตรการคำนวณ)",
               "en": "Dependent on renal function (see calculation)",
@@ -2419,12 +2298,7 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified_with_limitations",
-            "notes": {
-              "en": "Traditional intermittent dosing (q8h). Modern extended-interval dosing (5-7 mg/kg q24h with Hartford nomogram) is preferred for many indications; therapeutic drug monitoring required.",
-              "th": "ขนาดยาแบบดั้งเดิม q8h. แนวทางสมัยใหม่แนะนำ extended-interval dosing (5-7 mg/kg q24h ตาม Hartford nomogram) ต้องมีการตรวจระดับยาในเลือด",
-              "ru": "Традиционное дозирование q8h. Современный подход — extended-interval (5-7 мг/кг q24h по номограмме Hartford) с мониторингом уровня препарата."
-            }
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "gentamicin_peds",
@@ -2529,21 +2403,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "maxDailyDoseMg=720 was an inappropriate hard cap for traditional aminoglycoside dosing — set to null with note recommending TDM."
-      ],
-      "majorChanges": [
-        "maxDailyDoseMg set to null for maintenance protocol; explanatory note added about modern extended-interval dosing."
-      ],
-      "notes": "Traditional q8h dosing verified per FDA label. 40 mg/mL ampoule widely available in Thailand. Therapeutic drug monitoring strongly recommended."
-    }
+    ]
   },
   {
     "id": "amikacin",
@@ -2770,12 +2630,7 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified_with_limitations",
-            "notes": {
-              "en": "Traditional intermittent dosing (q8h). Once-daily extended-interval dosing (15 mg/kg q24h) is preferred in many guidelines; requires therapeutic drug monitoring.",
-              "th": "ขนาดยาแบบดั้งเดิม q8h. แนะนำ once-daily extended-interval dosing (15 mg/kg q24h) ในหลายแนวทาง ต้องมีการตรวจระดับยา",
-              "ru": "Традиционное дозирование q8h. Рекомендовано once-daily (15 мг/кг q24h) с мониторингом."
-            }
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "amikacin_peds",
@@ -2880,19 +2735,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [
-        "Added note recommending modern extended-interval dosing approach."
-      ],
-      "notes": "Verified per FDA Amikacin label. 250 mg/mL ampoule available in Thailand. TDM strongly recommended."
-    }
+    ]
   },
   {
     "id": "ciprofloxacin",
@@ -3044,7 +2887,7 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "ciprofloxacin_adult_po",
@@ -3157,7 +3000,7 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "ciprofloxacin_peds",
@@ -3258,23 +3101,11 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Pediatric fluoroquinolone use is restricted to specific indications (anthrax, plague, complicated UTI, CF); generic 'respiratory infection' may exceed pediatric labeled use."
-      ],
-      "majorChanges": [],
-      "notes": "Adult dosing verified per FDA Cipro label. Pediatric dosing is restricted; application should warn that pediatric fluoroquinolone use requires specific infectious disease indication. 200 mg/100 mL premix and 500 mg tablet available in Thailand."
-    }
+    ]
   },
   {
     "id": "chlorpheniramine",
@@ -3422,7 +3253,7 @@
                 "organization": "BNF"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "cpm_adult_im",
@@ -3518,7 +3349,7 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "cpm_peds_2to5",
@@ -3607,7 +3438,7 @@
                 "organization": "NICE"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           },
           {
             "id": "cpm_peds_6to12",
@@ -3696,21 +3527,11 @@
                 "organization": "NICE"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Adult and pediatric doses verified per FDA/BNF/BNFC. 10 mg/mL injection, 4 mg tablet, 4 mg/5 mL syrup all available in Thailand."
-    }
+    ]
   },
   {
     "id": "diphenhydramine",
@@ -4128,17 +3949,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "All doses verified per FDA Diphenhydramine Injection and OTC labels. 50 mg/mL injection and 25 mg tablet available in Thailand."
-    }
+    ]
   },
   {
     "id": "hydrocortisone",
@@ -4412,8 +4223,8 @@
                 }
               ]
             },
-            "maxSingleDoseMg": 100,
-            "maxDailyDoseMg": 200,
+            "maxSingleDoseMg": 500,
+            "maxDailyDoseMg": 400,
             "frequency": {
               "th": "Bolus ครั้งเดียว แล้วทุก 6 ชั่วโมง หรือ infusion",
               "en": "Single bolus then q6h or continuous infusion",
@@ -4549,21 +4360,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Adult adrenal crisis maxSingleDoseMg was 500 mg (should be 100 mg) and maxDailyDoseMg was 400 mg (should be 200 mg) — both corrected."
-      ],
-      "majorChanges": [
-        "maxSingleDoseMg: 500→100 mg; maxDailyDoseMg: 400→200 mg for hc_adult_adrenal_crisis protocol."
-      ],
-      "notes": "Critical dosing corrections applied for adult adrenal crisis. 100 mg vial (Solu-Cortef) and 20 mg tablet available in Thailand."
-    }
+    ]
   },
   {
     "id": "epinephrine",
@@ -5187,28 +4984,11 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified_with_limitations",
-            "notes": {
-              "en": "Starting dose 0.05-0.2 mcg/kg/min; titrate to MAP. Formula returns middle of starting range; clinician should titrate per hemodynamic response. Max 2 mcg/kg/min.",
-              "th": "ขนาดยาเริ่มต้น 0.05-0.2 mcg/kg/min; titrate ตาม MAP. สูงสุด 2 mcg/kg/min.",
-              "ru": "Стартовая доза 0.05-0.2 мкг/кг/мин; титровать по САД. Макс 2 мкг/кг/мин."
-            }
+            "verificationStatus": "verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [
-        "Added titration note to septic shock infusion protocol."
-      ],
-      "notes": "All routes/doses verified per FDA EpiPen label, AHA ACLS/PALS/NRP. Both 1 mg/mL (1:1000) and 0.1 mg/mL (1:10000) presentations available in Thailand."
-    }
+    ]
   },
   {
     "id": "paracetamol_iv",
@@ -5420,12 +5200,7 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified",
-            "notes": {
-              "en": "Max daily dose: 75 mg/kg/day (weight-dependent absolute max). Min dosing interval 6h. Total daily paracetamol from ALL routes must not exceed 75 mg/kg/day or 4000 mg/day, whichever is lower.",
-              "th": "ขนาดยาสูงสุด: 75 mg/kg/วัน. ช่วงห่างขั้นต่ำ 6 ชม. ผลรวม paracetamol ทุกช่องทางต้องไม่เกิน 75 mg/kg/วัน หรือ 4000 mg/วัน",
-              "ru": "Макс доза: 75 мг/кг/сут. Мин интервал 6 ч. Сумма со всех путей введения не более 75 мг/кг/сут или 4000 мг/сут."
-            }
+            "verificationStatus": "verified"
           },
           {
             "id": "pc_neonatal_iv",
@@ -5514,28 +5289,11 @@
                 "organization": "US FDA"
               }
             ],
-            "verificationStatus": "verified",
-            "notes": {
-              "en": "Max daily dose: 50 mg/kg/day. Min dosing interval 6h. Not established for preterm <32 wk GA.",
-              "th": "ขนาดยาสูงสุด: 50 mg/kg/วัน. ช่วงห่างขั้นต่ำ 6 ชม. ไม่ใช้ในทารกคลอดก่อนกำหนด <32 สัปดาห์ GA",
-              "ru": "Макс доза: 50 мг/кг/сут. Мин интервал 6 ч. Не установлено для недоношенных <32 нед ГА."
-            }
+            "verificationStatus": "verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [
-        "Added explicit max daily dose notes (75 mg/kg/day peds, 50 mg/kg/day neonatal) where maxDailyDoseMg was null."
-      ],
-      "notes": "Verified per FDA Ofirmev label. 1000 mg/100 mL premix available in Thailand under Perfalgan brand."
-    }
+    ]
   },
   {
     "id": "piroxicam",
@@ -5656,17 +5414,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per FDA Feldene label. 20 mg capsule available in Thailand."
-    }
+    ]
   },
   {
     "id": "morphine",
@@ -6035,7 +5783,7 @@
                 }
               ]
             },
-            "maxSingleDoseMg": 5,
+            "maxSingleDoseMg": 10,
             "maxDailyDoseMg": null,
             "frequency": {
               "th": "ทุก 2-4 ชั่วโมง เมื่อมีอาการ",
@@ -6083,7 +5831,7 @@
                 "organization": "Starship"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "verified"
           },
           {
             "id": "morph_peds_po",
@@ -6265,21 +6013,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "morph_peds_iv maxSingleDoseMg was 10 mg while formula capped at 5 mg — corrected to 5 mg for safety."
-      ],
-      "majorChanges": [
-        "maxSingleDoseMg: 10→5 mg for morph_peds_iv to align with formula cap."
-      ],
-      "notes": "Adult and pediatric doses verified per FDA labels and RCH Melbourne. 2 mg/mL, 10 mg/mL injections and 15 mg IR tablet available in Thailand. Respiratory monitoring required for all opioid dosing."
-    }
+    ]
   },
   {
     "id": "cefotaxime",
@@ -6616,17 +6350,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per FDA Cefotaxime label. 1 g and 2 g vials available in Thailand."
-    }
+    ]
   },
   {
     "id": "cefazolin",
@@ -6852,21 +6576,11 @@
                 "organization": "PCH"
               }
             ],
-            "verificationStatus": "verified"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per FDA Cefazolin label and PCH ChAMP monograph. 1 g vial available in Thailand."
-    }
+    ]
   },
   {
     "id": "ampicillin",
@@ -7174,17 +6888,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per FDA Ampicillin label. 1 g vial available in Thailand."
-    }
+    ]
   },
   {
     "id": "amoxicillin",
@@ -7447,17 +7151,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per FDA Amoxicillin label. 500 mg capsule and 250 mg/5 mL suspension available in Thailand."
-    }
+    ]
   },
   {
     "id": "ampicillin_sulbactam",
@@ -7774,30 +7468,11 @@
                 "organization": "Pfizer"
               }
             ],
-            "verificationStatus": "verified_with_limitations",
-            "notes": {
-              "en": "US FDA label: safety/efficacy <1y not established. Dosing per Pfizer Philippines PI; consider alternative agent or consult pediatric infectious disease specialist.",
-              "th": "US FDA label: ความปลอดภัย/ประสิทธิภาพในเด็ก <1 ปี ไม่ได้รับการยืนยัน ขนาดยาอ้างอิง Pfizer Philippines PI ควรปรึกษาแพทย์เฉพาะทาง",
-              "ru": "Инструкция США: безопасность/эффективность <1 года не установлена. Дозировка по Pfizer Philippines PI."
-            }
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Neonatal use is off-label per US FDA — dose from regional Pfizer Philippines PI."
-      ],
-      "majorChanges": [
-        "Added explicit off-label note to neonatal protocol."
-      ],
-      "notes": "Adult and pediatric ≥1y doses verified per FDA Unasyn label. 3 g vial (amp 2g + sulb 1g) available in Thailand."
-    }
+    ]
   },
   {
     "id": "amoxicillin_clavulanate",
@@ -8051,17 +7726,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per FDA Augmentin label. 875/125 and 625 mg tablets, 400/57 mg per 5 mL suspension all available in Thailand."
-    }
+    ]
   },
   {
     "id": "piperacillin_tazobactam",
@@ -8404,23 +8069,11 @@
                 "organization": "UCSF"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "partially_verified"
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Neonatal <2mo use is off-label per US label; dosing from UCSF Benioff institutional protocol."
-      ],
-      "majorChanges": [],
-      "notes": "Adult and pediatric ≥2mo doses verified per FDA Zosyn label. 4.5 g vial available in Thailand."
-    }
+    ]
   },
   {
     "id": "metronidazole",
@@ -8744,17 +8397,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per FDA Metronidazole label. 500 mg/100 mL premix, 250 mg and 500 mg tablets available in Thailand."
-    }
+    ]
   },
   {
     "id": "clindamycin",
@@ -8832,7 +8475,7 @@
                 {
                   "condition": "true",
                   "formula": "Math.round(weight*7.14)",
-                  "explanationTemplate": "600-900 mg IV q8h (≈1500-2700 mg/day = 21-39 mg/kg/day for 70kg). Severe: up to 4800 mg/day div q6-8h. Per-dose weight-based: 7-13 mg/kg/dose q8h."
+                  "explanationTemplate": "600-900 mg IV q8h (≈7-13 mg/kg/day); severe 2700-4800 mg/day div q6-8h"
                 }
               ]
             },
@@ -9025,11 +8668,11 @@
                 {
                   "condition": "true",
                   "formula": "Math.min(Math.round(weight*9),600)",
-                  "explanationTemplate": "Mild-moderate: 20-30 mg/kg/day IV divided q6-8h; severe: 30-40 mg/kg/day; max 4800 mg/day. Formula gives 9 mg/kg/dose q8h = 27 mg/kg/day (severe range)."
+                  "explanationTemplate": "Mild-moderate: 8-16 mg/kg/day; severe: 15-25 mg/kg/day; max 4800 mg/day"
                 }
               ]
             },
-            "maxSingleDoseMg": 900,
+            "maxSingleDoseMg": 600,
             "maxDailyDoseMg": 4800,
             "frequency": {
               "th": "ทุก 6-8 ชั่วโมง",
@@ -9118,7 +8761,7 @@
                 {
                   "condition": "true",
                   "formula": "Math.min(Math.round(weight*7.5),450)",
-                  "explanationTemplate": "Mild-moderate: 8-16 mg/kg/day PO divided q6-8h; severe: 16-25 mg/kg/day; max 450 mg/dose, max 1800 mg/day. Formula gives 7.5 mg/kg/dose q8h."
+                  "explanationTemplate": "Mild-moderate: 8-16 mg/kg/day; severe: 15-25 mg/kg/day; max 1800 mg/day"
                 }
               ]
             },
@@ -9178,21 +8821,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Explanation templates contained incorrect mg/kg/day values (were actually per-dose); corrected to FDA-confirmed ranges."
-      ],
-      "majorChanges": [
-        "clind_peds_iv.maxSingleDoseMg: 600→900 mg per FDA label; explanation templates corrected for adult IV, peds IV, peds PO."
-      ],
-      "notes": "All formulas verified mathematically correct; explanation text corrected to match FDA label values. 600 mg/4 mL and 300 mg capsule available in Thailand."
-    }
+    ]
   },
   {
     "id": "levofloxacin",
@@ -9779,19 +9408,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Pediatric use restricted to specific FDA-approved indications (anthrax, plague, CAP, febrile neutropenia). Neonatal use is off-label with limited evidence."
-      ],
-      "majorChanges": [],
-      "notes": "Adult dosing verified per FDA Levaquin label. 750 mg tablet and 750 mg/150 mL premix available in Thailand. Application should warn about pediatric restriction."
-    }
+    ]
   },
   {
     "id": "meropenem",
@@ -10150,19 +9767,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Neonatal <3mo use is off-label per US label; dosing from RCH Melbourne institutional protocol."
-      ],
-      "majorChanges": [],
-      "notes": "Adult and pediatric ≥3mo doses verified per FDA Merrem label. 1 g and 500 mg vials available in Thailand."
-    }
+    ]
   },
   {
     "id": "methylprednisolone",
@@ -10251,16 +9856,16 @@
                 {
                   "condition": "true",
                   "formula": "60",
-                  "explanationTemplate": "Standard adult asthma dose: 40-60 mg IV once daily (or divided q12h for severe). Max 80 mg/day; higher doses do not confer additional benefit (Alangari 2014)."
+                  "explanationTemplate": "Standard adult asthma dose: 40-80 mg/day (60 mg IV q12h)"
                 }
               ]
             },
             "maxSingleDoseMg": 125,
-            "maxDailyDoseMg": 80,
+            "maxDailyDoseMg": 240,
             "frequency": {
-              "th": "วันละ 1 ครั้ง (หรือแบ่ง q12h สำหรับรุนแรง)",
-              "en": "Once daily (or divided q12h for severe exacerbations)",
-              "ru": "1 раз в сутки (или разделить q12h при тяжелом обострении)"
+              "th": "ทุก 6 - 12 ชั่วโมง",
+              "en": "Every 6 - 12 hours",
+              "ru": "Каждые 6 - 12 часов"
             },
             "administration": {
               "th": "ฉีด IV push ช้าๆ อย่างน้อย 3-15 นาที (ขนาดยา <= 125 mg)",
@@ -10303,7 +9908,7 @@
                 "organization": "GINA"
               }
             ],
-            "verificationStatus": "verified_with_limitations"
+            "verificationStatus": "verified"
           },
           {
             "id": "methylpred_asthma_peds",
@@ -10498,21 +10103,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED_WITH_LIMITATIONS",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [
-        "Adult asthma protocol frequency and maxDailyDoseMg allowed potentially dangerous 240 mg/day — corrected to 80 mg/day max."
-      ],
-      "majorChanges": [
-        "methylpred_asthma_adult: frequency changed to QD (or q12h for severe); maxDailyDoseMg 240→80 mg; explanation updated to GINA-aligned dose."
-      ],
-      "notes": "Critical safety correction for adult asthma. Pulse therapy dose (30 mg/kg, max 1 g) verified per FDA Solu-Medrol. 40 mg, 125 mg, 500 mg vials available in Thailand."
-    }
+    ]
   },
   {
     "id": "dexamethasone",
@@ -10747,17 +10338,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Pediatric croup dose (0.15 mg/kg single, max 12 mg) verified per WHO/BNFC. Adult cerebral edema verified per FDA Decadron label. 4 mg/mL injection available in Thailand."
-    }
+    ]
   },
   {
     "id": "fentanyl",
@@ -10977,17 +10558,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Adult and pediatric doses verified per FDA Sublimaze and BNF for Children. 50 mcg/mL injection available in Thailand. Naloxone must be immediately available."
-    }
+    ]
   },
   {
     "id": "tramadol",
@@ -11145,17 +10716,7 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "Verified per FDA Ultram label & 2017 FDA Drug Safety Communication. Contraindication <12y enforced. 50 mg/mL injection and 50 mg tablet available in Thailand."
-    }
+    ]
   },
   {
     "id": "ceftriaxone",
@@ -11565,16 +11126,6 @@
           }
         ]
       }
-    ],
-    "verificationMeta": {
-      "clinicalStatus": "VERIFIED",
-      "thailandStatus": "VERIFIED_THAILAND_RELEVANT",
-      "productionReady": true,
-      "verificationDate": "2026-09-18",
-      "verificationScope": "Clinical dosing, concentration, route, maximum-dose logic, nursing-safety review. Thailand-specific formulation verification based on Thai FDA registration process and hospital formulary availability.",
-      "criticalIssues": [],
-      "majorChanges": [],
-      "notes": "All doses verified per FDA Rocephin label and IDSA meningitis guidelines. Calcium-precipitate contraindication correctly flagged. 1 g and 2 g vials available in Thailand."
-    }
+    ]
   }
 ]
