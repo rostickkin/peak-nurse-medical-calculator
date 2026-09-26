@@ -17,6 +17,7 @@ import { DisclaimerModal } from './components/DisclaimerModal';
 import { SearchBanner } from './components/SearchBanner';
 import { CategoryGrid } from './components/CategoryGrid';
 import { MedicationList } from './components/MedicationList';
+import { AllMedicationsList } from './components/AllMedicationsList';
 import { CalculatorTab } from './components/CalculatorTab';
 import { InformationTab } from './components/InformationTab';
 import { ReferencesTab } from './components/ReferencesTab';
@@ -246,6 +247,14 @@ export default function App() {
               recentIds={recent}
               favoriteIds={favorites}
               medications={medications}
+              onSelectMedication={selectMedication}
+            />
+
+            {/* ALL MEDICATIONS ALPHABETICAL LIST */}
+            <AllMedicationsList
+              medications={medications}
+              search={search}
+              selectedCategory={selectedCategory}
               onSelectMedication={selectMedication}
             />
           </div>
