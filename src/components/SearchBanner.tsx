@@ -60,7 +60,7 @@ export const SearchBanner = ({ search, setSearch, medications, onSelectMedicatio
               setSearch('');
               setIsOpen(false);
             }}
-            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-black bg-gray-100 hover:bg-gray-200 text-gray-500 px-2 py-1 rounded-md transition"
+            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[10px] font-black bg-gray-100 hover:bg-gray-200 text-gray-500 px-2 py-1 rounded-md transition uppercase"
           >
             CLEAR
           </button>
@@ -70,13 +70,13 @@ export const SearchBanner = ({ search, setSearch, medications, onSelectMedicatio
       {isOpen && search.trim().length > 0 && (
         <div className="absolute left-0 right-0 mt-2 bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden z-50 max-h-80 overflow-y-auto divide-y divide-gray-50">
           <div className="px-3 py-2 bg-slate-50 text-[10px] font-extrabold text-gray-400 uppercase tracking-wider flex items-center justify-between">
-            <span>Suggestions matching "{search.trim()}"</span>
-            <span>{suggestions.length} found</span>
+            <span>{t('suggestions_matching')} "{search.trim()}"</span>
+            <span>{suggestions.length} {t('found')}</span>
           </div>
 
           {suggestions.length === 0 ? (
             <div className="p-4 text-center text-xs font-semibold text-gray-400">
-              No medications found starting with "{search}"
+              {t('no_meds_found')} "{search}"
             </div>
           ) : (
             suggestions.map(med => {

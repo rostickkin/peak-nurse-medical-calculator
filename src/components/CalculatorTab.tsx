@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AlertTriangle, Info, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import type { Medication, Protocol } from '../types/medication';
+import type { Medication, Protocol, Rule } from '../types/medication';
 import { isMedicationWithdrawn } from '../utils/calculationEngine';
 
 interface CalculatorTabProps {
@@ -29,6 +29,7 @@ interface CalculatorTabProps {
   evaluatedDose: number | null;
   evaluatedVolume: number | null;
   formulaSteps: string[];
+  matchedRule: Rule | null;
 }
 
 export const CalculatorTab = ({
@@ -54,6 +55,7 @@ export const CalculatorTab = ({
   evaluatedDose,
   evaluatedVolume,
   formulaSteps,
+  matchedRule
 }: CalculatorTabProps) => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
@@ -129,21 +131,17 @@ export const CalculatorTab = ({
       {/* PATIENT PARAMETERS (SHOW ONLY RELEVANT INPUTS FOR CURRENT PROTOCOL) */}
       <div className="bg-white border border-gray-200/80 rounded-2xl p-4 shadow-sm space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">Patient Details</h3>
+          <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">{t('patient_info')}</h3>
           {!hasAnyInput && (
             <span className="text-[10px] font-extrabold bg-blue-50 text-blue-600 px-2.5 py-0.5 rounded-full uppercase">
-              Fixed Dose Protocol
+              {t('fixed_dose_badge')}
             </span>
           )}
         </div>
 
         {!hasAnyInput ? (
           <div className="bg-slate-50 border border-gray-100 rounded-xl p-3 text-xs text-gray-500 font-medium leading-relaxed">
-            {lang === 'ru' 
-              ? 'Для данного протокола используется фиксированная дозировка. Ввод параметров пациента (вес/КК) не требуется.'
-              : lang === 'th'
-              ? 'สูตรยานี้ใช้ขนาดยาตายตัว ไม่จำเป็นต้องกรอกน้ำหนักหรือค่าการทำงานของไต'
-              : 'This protocol uses a fixed dosage. No patient body parameters (weight/CrCl) are required.'}
+            {t('fixed_dose_notice')}
           </div>
         ) : (
           <div className="space-y-3">
@@ -162,16 +160,16 @@ export const CalculatorTab = ({
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold text-gray-400 mb-1">Unit</label>
+                  <label className="block text-[11px] font-bold text-gray-400 mb-1">{t('unit')}</label>
                   <select
                     value={ageUnit}
                     onChange={(e) => setAgeUnit(e.target.value as any)}
                     disabled={isWithdrawn}
                     className="w-full bg-slate-50 border border-gray-200 rounded-xl px-2 py-2 text-xs font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50"
                   >
-                    <option value="years">Years</option>
-                    <option value="months">Months</option>
-                    <option value="days">Days</option>
+                    <option value="years">{t('years')}</option>
+                    <option value="months">{t('months')}</option>
+                    <option value="days">{t('days')}</option>
                   </select>
                 </div>
               </div>
@@ -227,13 +225,9 @@ export const CalculatorTab = ({
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
-                <h4 className="font-extrabold text-[11px] uppercase text-blue-800 mb-1">What is CrCl?</h4>
+                <h4 className="font-extrabold text-[11px] uppercase text-blue-800 mb-1">{t('crcl_info_title')}</h4>
                 <p className="text-[11px] font-medium leading-relaxed text-blue-900/90">
-                  {lang === 'ru'
-                    ? 'CrCl (Клиренс креатинина) — показатель скорости работы почек (мл/мин). Используется для безопасной коррекции дозировок выводимых почками препаратов.'
-                    : lang === 'th'
-                    ? 'CrCl (Creatinine Clearance) คือค่าอัตราการกรองของไต (มล./นาที) ใช้สำหรับปรับลดขนาดยาตามระดับการทำงานของไตของผู้ป่วย'
-                    : 'CrCl (Creatinine Clearance) measures kidney function (mL/min) to safely adjust medication doses for renally excreted drugs.'}
+                  {t('crcl_info_text')}
                 </p>
               </div>
             )}
@@ -246,7 +240,7 @@ export const CalculatorTab = ({
         {/* ROUTE */}
         <div>
           <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
-            {t('route')}
+            {t('route_admin')}
           </label>
           <div className="flex gap-2">
             {[...new Set(med.indications.flatMap(i => i.protocols.map(p => p.route)))].map(r => (
@@ -271,7 +265,7 @@ export const CalculatorTab = ({
         {med.availableStrengths && med.availableStrengths.length > 0 && (
           <div>
             <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">
-              Available Presentation / Strength
+              {t('available_strength')}
             </label>
             <select
               value={selectedStrengthId}
@@ -292,7 +286,7 @@ export const CalculatorTab = ({
       {/* VALIDATION ERROR */}
       {validationError && (
         <div className="bg-rose-50 border border-rose-200 text-rose-700 p-3 rounded-xl text-xs font-bold flex items-center gap-2">
-          <AlertTriangle className="w-4 h-4 text-rose-500 flex-shrink-0" />
+          <AlertTriangle className="w-4 h-4 text-rose-500 flex-shrink-0 animate-bounce" />
           <span>{validationError}</span>
         </div>
       )}
@@ -302,55 +296,126 @@ export const CalculatorTab = ({
         type="button"
         onClick={onCalculate}
         disabled={isWithdrawn}
-        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white font-black py-3.5 px-6 rounded-2xl transition shadow-md text-sm tracking-wide flex items-center justify-center gap-2"
+        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white font-black py-4 px-6 rounded-2xl transition shadow-lg shadow-blue-500/20 text-sm tracking-wide flex items-center justify-center gap-2 active:scale-[0.99]"
       >
-        {t('calculate')}
+        {t('calculate_dose')}
       </button>
 
-      {/* RESULT DISPLAY CARD */}
+      {/* ================= RESTORED ORIGINAL CALCULATION RESULTS PANELS ================= */}
       {showResult && activeProtocol && evaluatedDose !== null && (
-        <div className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white rounded-3xl p-6 shadow-xl space-y-4">
-          <div className="flex items-center justify-between border-b border-white/10 pb-3">
-            <span className="text-xs font-bold tracking-widest text-blue-200 uppercase">{t('result')}</span>
-            <span className="bg-blue-500/30 text-blue-100 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase border border-white/10">
-              {activeProtocol.population} Protocol
+        <div className="space-y-5">
+          
+          {/* RECOMMENDED DOSE DETAILS CARD */}
+          <div className="bg-emerald-500 text-white border-2 border-emerald-500 shadow-lg shadow-emerald-500/10 rounded-3xl p-6 relative overflow-hidden">
+            <span className="text-[9px] font-black tracking-widest uppercase bg-white/20 py-1 px-3 rounded-md mb-2 inline-block">
+              {t('recommended_dose')}
             </span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-[10px] font-bold text-blue-300 uppercase tracking-wider">{t('recommended_dose')}</p>
-              <p className="text-2xl font-black text-white mt-1">
-                {evaluatedDose} <span className="text-sm font-bold text-blue-200">{activeProtocol.calculation.unit}</span>
-              </p>
+            
+            <div className="flex items-baseline gap-1 mt-1">
+              <span className="text-4xl font-black">
+                {Number.isInteger(evaluatedDose) ? evaluatedDose : evaluatedDose.toFixed(2)}
+              </span>
+              <span className="text-xl font-bold opacity-90">{activeProtocol.calculation.unit}</span>
+              <span className="text-xl font-bold ml-2 opacity-95">{activeProtocol.route}</span>
             </div>
 
-            {evaluatedVolume !== null && (
-              <div>
-                <p className="text-[10px] font-bold text-blue-300 uppercase tracking-wider">{t('volume_to_administer')}</p>
-                <p className="text-2xl font-black text-emerald-400 mt-1">
-                  {evaluatedVolume.toFixed(2)} <span className="text-sm font-bold text-emerald-200">mL</span>
-                </p>
-                {selectedStrength && (
-                  <p className="text-[9px] text-blue-300/80 mt-0.5">@ {selectedStrength.mgPerMl} mg/mL</p>
-                )}
-              </div>
+            {/* Weight-based dose info line */}
+            {activeProtocol.doseType === 'weight_based' && matchedRule && (
+              <p className="text-xs font-bold text-white/90 mt-2">
+                ({matchedRule.explanationTemplate || `${activeProtocol.calculation.unit}/kg`})
+              </p>
             )}
+
+            <div className="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-white/20">
+              <div>
+                <p className="text-[9px] font-bold text-white/75 uppercase tracking-wider">{t('frequency')}</p>
+                <p className="text-xs font-bold mt-0.5">{getLabel(activeProtocol.frequency)}</p>
+              </div>
+              {activeProtocol.maxSingleDoseMg && (
+                <div>
+                  <p className="text-[9px] font-bold text-white/75 uppercase tracking-wider">{t('max_single_dose')}</p>
+                  <p className="text-xs font-bold mt-0.5">{activeProtocol.maxSingleDoseMg} mg</p>
+                </div>
+              )}
+              {activeProtocol.maxDailyDoseMg && (
+                <div>
+                  <p className="text-[9px] font-bold text-white/75 uppercase tracking-wider">{t('max_daily_dose')}</p>
+                  <p className="text-xs font-bold mt-0.5">{activeProtocol.maxDailyDoseMg} mg</p>
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* FORMULA BREAKDOWN */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-xs font-mono space-y-1 border border-white/10">
-            <p className="text-[10px] font-sans font-bold text-blue-200 uppercase tracking-wider mb-1">Formula Breakdown:</p>
-            {formulaSteps.map((step, idx) => (
-              <p key={idx} className="text-blue-100">{step}</p>
-            ))}
-          </div>
+          {/* VOLUME TO ADMINISTER CARD */}
+          {evaluatedVolume !== null && selectedStrength && (
+            <div className="bg-white border border-gray-200/60 rounded-3xl p-5 shadow-sm space-y-4">
+              <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">{t('volume_admin')}</h3>
+              
+              <div className="grid grid-cols-2 gap-3 pb-3 border-b border-gray-50">
+                <div>
+                  <label className="block text-[9px] font-black text-gray-400 uppercase tracking-wider mb-1">
+                    {t('concentration')}
+                  </label>
+                  <select
+                    value={selectedStrengthId}
+                    onChange={(e) => setSelectedStrengthId(e.target.value)}
+                    className="w-full bg-slate-50 border border-gray-200 rounded-xl px-2.5 py-2 text-xs font-bold text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 cursor-pointer"
+                  >
+                    {med.availableStrengths.map(st => (
+                      <option key={st.id} value={st.id}>
+                        {getLabel(st.label)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[9px] font-black text-gray-400 uppercase tracking-wider mb-1">
+                    {t('dose')}
+                  </label>
+                  <div className="bg-slate-100 border border-slate-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-700">
+                    {Number.isInteger(evaluatedDose) ? evaluatedDose : evaluatedDose.toFixed(2)} mg
+                  </div>
+                </div>
+              </div>
 
-          {/* FREQUENCY & ADMINISTRATION NOTES */}
-          <div className="pt-2 text-xs space-y-1.5 border-t border-white/10">
-            <p><span className="font-bold text-blue-200">{t('frequency')}:</span> {getLabel(activeProtocol.frequency)}</p>
-            <p><span className="font-bold text-blue-200">{t('administration')}:</span> {getLabel(activeProtocol.administration)}</p>
-          </div>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-gray-500">{t('volume')}:</span>
+                <span className="text-2xl font-black text-blue-600">
+                  {Number.isInteger(evaluatedVolume) ? evaluatedVolume : evaluatedVolume.toFixed(3)} mL
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* CALCULATION FORMULA & STEPS DISPLAY CARD */}
+          {formulaSteps.length > 0 && (
+            <div className="bg-white border border-gray-200/60 rounded-3xl p-5 shadow-sm space-y-3">
+              <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">{t('formula')}</h3>
+              <div className="bg-slate-50 border border-gray-200/60 rounded-2xl p-4 space-y-2 font-mono text-xs text-slate-700">
+                {formulaSteps.map((step, idx) => (
+                  <div key={idx} className={`${idx === formulaSteps.length - 1 ? 'border-t border-gray-200 pt-2 font-bold text-blue-600 text-sm mt-2' : ''}`}>
+                    {step}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* WARNINGS PANEL */}
+          {activeProtocol.warnings && activeProtocol.warnings.length > 0 && (
+            <div className="bg-amber-50 border border-amber-200/60 rounded-3xl p-5 shadow-sm space-y-3">
+              <h3 className="text-xs font-black text-amber-800 uppercase tracking-wider flex items-center gap-1.5">
+                <AlertTriangle className="w-4 h-4 text-amber-500" />
+                {t('warnings')}
+              </h3>
+              <ul className="list-disc pl-5 text-xs font-medium text-amber-900/80 space-y-2 leading-relaxed">
+                {activeProtocol.warnings.map((warn, i) => (
+                  <li key={i}>{getLabel(warn.text)}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
         </div>
       )}
     </div>

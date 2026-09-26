@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BookOpen, ChevronDown, ChevronUp } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import type { Medication, Protocol } from '../types/medication';
 
 interface ReferencesTabProps {
@@ -8,6 +9,7 @@ interface ReferencesTabProps {
 }
 
 export const ReferencesTab = ({ med, activeProtocol }: ReferencesTabProps) => {
+  const { t } = useTranslation();
   const [sourcesOpen, setSourcesOpen] = useState(true);
 
   return (
@@ -16,7 +18,7 @@ export const ReferencesTab = ({ med, activeProtocol }: ReferencesTabProps) => {
       {med.verificationMeta && (
         <div className="bg-white border border-gray-200/80 rounded-2xl p-5 shadow-sm space-y-3">
           <div className="flex items-center justify-between border-b border-gray-100 pb-2.5">
-            <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">Clinical Verification Meta</h3>
+            <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">{t('verification_meta')}</h3>
             <span className={`text-[10px] font-black px-2 py-0.5 rounded-md uppercase ${
               med.verificationMeta.clinicalStatus === 'VERIFIED'
                 ? 'bg-emerald-100 text-emerald-800'
@@ -30,16 +32,16 @@ export const ReferencesTab = ({ med, activeProtocol }: ReferencesTabProps) => {
 
           <div className="space-y-2 text-xs">
             <div>
-              <span className="text-gray-400 font-bold block text-[10px] uppercase">Thailand Status</span>
+              <span className="text-gray-400 font-bold block text-[10px] uppercase">{t('thailand_status')}</span>
               <span className="font-semibold text-gray-800">{med.verificationMeta.thailandStatus}</span>
             </div>
             <div>
-              <span className="text-gray-400 font-bold block text-[10px] uppercase">Verification Date</span>
+              <span className="text-gray-400 font-bold block text-[10px] uppercase">{t('verification_date')}</span>
               <span className="font-semibold text-gray-800">{med.verificationMeta.verificationDate}</span>
             </div>
             {med.verificationMeta.notes && (
               <div>
-                <span className="text-gray-400 font-bold block text-[10px] uppercase">Clinical Notes</span>
+                <span className="text-gray-400 font-bold block text-[10px] uppercase">{t('clinical_notes')}</span>
                 <p className="text-gray-600 text-[11px] leading-relaxed mt-0.5">{med.verificationMeta.notes}</p>
               </div>
             )}
@@ -56,7 +58,7 @@ export const ReferencesTab = ({ med, activeProtocol }: ReferencesTabProps) => {
         >
           <div className="flex items-center gap-2">
             <BookOpen className="w-4 h-4 text-blue-600" />
-            <h3 className="text-xs font-black text-gray-700 uppercase tracking-wider">Authoritative Sources & Guidelines</h3>
+            <h3 className="text-xs font-black text-gray-700 uppercase tracking-wider">{t('sources_guidelines')}</h3>
           </div>
           {sourcesOpen ? <ChevronUp className="w-4 h-4 text-gray-400" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
         </button>

@@ -8,7 +8,7 @@ interface InformationTabProps {
 }
 
 export const InformationTab = ({ med, activeProtocol }: InformationTabProps) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = i18n.language;
 
   const getLabel = (obj: any) => {
@@ -20,23 +20,23 @@ export const InformationTab = ({ med, activeProtocol }: InformationTabProps) => 
     <div className="space-y-4">
       {/* DRUG OVERVIEW CARD */}
       <div className="bg-white border border-gray-200/80 rounded-2xl p-5 shadow-sm space-y-3">
-        <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">Medication Overview</h3>
+        <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">{t('med_overview')}</h3>
         <div className="grid grid-cols-2 gap-3 text-xs">
           <div>
-            <span className="text-gray-400 font-bold block text-[10px] uppercase">Generic Name</span>
+            <span className="text-gray-400 font-bold block text-[10px] uppercase">{t('generic_name')}</span>
             <span className="font-extrabold text-gray-800">{med.genericName}</span>
           </div>
           <div>
-            <span className="text-gray-400 font-bold block text-[10px] uppercase">Category</span>
+            <span className="text-gray-400 font-bold block text-[10px] uppercase">{t('category_label')}</span>
             <span className="font-extrabold text-gray-800">{med.category}</span>
           </div>
           <div className="col-span-2">
-            <span className="text-gray-400 font-bold block text-[10px] uppercase">Active Ingredient</span>
+            <span className="text-gray-400 font-bold block text-[10px] uppercase">{t('active_ingredient')}</span>
             <span className="font-semibold text-gray-700">{med.activeIngredient}</span>
           </div>
           {med.brandNames && med.brandNames.length > 0 && (
             <div className="col-span-2">
-              <span className="text-gray-400 font-bold block text-[10px] uppercase">Common Brands</span>
+              <span className="text-gray-400 font-bold block text-[10px] uppercase">{t('common_brands')}</span>
               <span className="font-semibold text-gray-700">{med.brandNames.join(', ')}</span>
             </div>
           )}
@@ -46,13 +46,13 @@ export const InformationTab = ({ med, activeProtocol }: InformationTabProps) => 
       {/* ADJUSTMENT NOTES */}
       {activeProtocol && (
         <div className="bg-white border border-gray-200/80 rounded-2xl p-5 shadow-sm space-y-3">
-          <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">Clinical Dosing Adjustments</h3>
+          <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">{t('dosing_adjustments')}</h3>
           
           {/* RENAL ADJUSTMENT */}
           <div className="p-3 bg-amber-50/60 border border-amber-100 rounded-xl text-xs space-y-1">
             <div className="flex items-center gap-1.5 font-bold text-amber-900">
               <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
-              <span>Renal Adjustment Required: {activeProtocol.renalAdjustment?.required ? 'YES' : 'NO'}</span>
+              <span>{t('renal_adj_req')} {activeProtocol.renalAdjustment?.required ? t('yes') : t('no')}</span>
             </div>
             {activeProtocol.renalAdjustment?.note && (
               <p className="text-amber-800/80 text-[11px] font-medium leading-relaxed">
@@ -65,7 +65,7 @@ export const InformationTab = ({ med, activeProtocol }: InformationTabProps) => 
           <div className="p-3 bg-blue-50/60 border border-blue-100 rounded-xl text-xs space-y-1">
             <div className="flex items-center gap-1.5 font-bold text-blue-900">
               <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-              <span>Hepatic Adjustment Required: {activeProtocol.hepaticAdjustment?.required ? 'YES' : 'NO'}</span>
+              <span>{t('hepatic_adj_req')} {activeProtocol.hepaticAdjustment?.required ? t('yes') : t('no')}</span>
             </div>
             {activeProtocol.hepaticAdjustment?.note && (
               <p className="text-blue-800/80 text-[11px] font-medium leading-relaxed">
@@ -79,7 +79,7 @@ export const InformationTab = ({ med, activeProtocol }: InformationTabProps) => 
       {/* PROTOCOL WARNINGS */}
       {activeProtocol?.warnings && activeProtocol.warnings.length > 0 && (
         <div className="bg-white border border-gray-200/80 rounded-2xl p-5 shadow-sm space-y-3">
-          <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">Safety Warnings & Cautions</h3>
+          <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">{t('safety_warnings')}</h3>
           <div className="space-y-2">
             {activeProtocol.warnings.map((w, idx) => (
               <div key={idx} className="p-3 bg-rose-50/60 border border-rose-100 rounded-xl text-xs text-rose-900 font-medium flex items-start gap-2">

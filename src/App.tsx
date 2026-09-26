@@ -23,7 +23,7 @@ import { InformationTab } from './components/InformationTab';
 import { ReferencesTab } from './components/ReferencesTab';
 
 export default function App() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const currentLang = i18n.language;
   
   // App Core States
@@ -196,7 +196,7 @@ export default function App() {
 
   const weightNum = parseFloat(weight) || 0;
   const crclNum = parseFloat(crcl) || 0;
-  const { evaluatedDose, formulaSteps } = calculateDoseResult(
+  const { matchedRule, evaluatedDose, formulaSteps } = calculateDoseResult(
     showResult ? activeProtocol : null,
     weightNum,
     crclNum,
@@ -269,7 +269,7 @@ export default function App() {
                 onClick={goHome}
                 className="flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-gray-800 bg-white border border-gray-200 px-3 py-1.5 rounded-xl transition shadow-sm"
               >
-                <ChevronLeft className="w-4 h-4" /> Back to Drugs
+                <ChevronLeft className="w-4 h-4" /> {t('back_to_drugs')}
               </button>
 
               <button
@@ -310,7 +310,7 @@ export default function App() {
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
-                  Calculator
+                  {t('calculator')}
                 </button>
                 <button
                   type="button"
@@ -321,7 +321,7 @@ export default function App() {
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
-                  Information
+                  {t('information')}
                 </button>
                 <button
                   type="button"
@@ -332,7 +332,7 @@ export default function App() {
                       : 'text-gray-500 hover:text-gray-700'
                   }`}
                 >
-                  References
+                  {t('references')}
                 </button>
               </div>
             </div>
@@ -364,6 +364,7 @@ export default function App() {
                 evaluatedDose={evaluatedDose}
                 evaluatedVolume={evaluatedVolume}
                 formulaSteps={formulaSteps}
+                matchedRule={matchedRule}
               />
             )}
 
