@@ -52,9 +52,11 @@ export const MedicationList = ({
       {currentListIds.length === 0 ? (
         <div className="py-8 text-center">
           <p className="text-xs font-bold text-gray-400 mb-1">
-            {homeTab === 'recent' ? t('no_recent') : 'No favorite medications added.'}
+            {homeTab === 'recent' ? t('no_recent') : t('no_favorites')}
           </p>
-          <p className="text-[10px] text-gray-300">Medications will appear here.</p>
+          <p className="text-[10px] text-gray-300">
+            {homeTab === 'recent' ? t('no_recent_sub') : t('no_favorites_sub')}
+          </p>
         </div>
       ) : (
         <div className="divide-y divide-gray-50">
