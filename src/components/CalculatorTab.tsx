@@ -1,4 +1,5 @@
-import { AlertTriangle } from 'lucide-react';
+import { useState } from 'react';
+import { AlertTriangle, Info, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import type { Medication, Protocol } from '../types/medication';
 import { isMedicationWithdrawn } from '../utils/calculationEngine';
@@ -57,6 +58,7 @@ export const CalculatorTab = ({
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
   const isWithdrawn = isMedicationWithdrawn(med);
+  const [showCrclInfo, setShowCrclInfo] = useState(false);
 
   const getLabel = (obj: any) => {
     if (!obj) return '';
@@ -64,6 +66,25 @@ export const CalculatorTab = ({
   };
 
   const selectedStrength = med.availableStrengths.find(s => s.id === selectedStrengthId);
+
+  // Determine required inputs strictly based on activeProtocol
+  const requiredInputsList = activeProtocol?.requiredInputs || [];
+  const requiresWeight = requiredInputsList.some(i => i.id === 'weight');
+  const requiresCrcl = requiredInputsList.some(i => i.id === 'crcl');
+  const requiresAgeInput = requiredInputsList.some(i => i.id === 'age') || 
+    (activeProtocol?.ageRange !== undefined && (activeProtocol.ageRange.min !== undefined || activeProtocol.ageRange.max !== undefined)) ||
+    activeProtocol?.population === 'pediatric' || 
+    activeProtocol?.population === 'neonatal';
+
+  const weightInputDef = requiredInputsList.find(i => i.id === 'weight');
+  const crclInputDef = requiredInputsList.find(i => i.id === 'crcl');
+  const ageInputDef = requiredInputsList.find(i => i.id === 'age');
+
+  const weightPlaceholder = weightInputDef?.defaultValue ? `e.g. ${weightInputDef.defaultValue}` : 'e.g. 70';
+  const crclPlaceholder = crclInputDef?.defaultValue ? `e.g. ${crclInputDef.defaultValue}` : 'e.g. 90';
+  const agePlaceholder = ageInputDef?.defaultValue ? `e.g. ${ageInputDef.defaultValue}` : (ageUnit === 'years' ? 'e.g. 32' : ageUnit === 'months' ? 'e.g. 6' : 'e.g. 10');
+
+  const hasAnyInput = requiresAgeInput || requiresWeight || requiresCrcl;
 
   return (
     <div className="space-y-5">
@@ -105,62 +126,119 @@ export const CalculatorTab = ({
         </select>
       </div>
 
-      {/* PATIENT PARAMETERS */}
+      {/* PATIENT PARAMETERS (SHOW ONLY RELEVANT INPUTS FOR CURRENT PROTOCOL) */}
       <div className="bg-white border border-gray-200/80 rounded-2xl p-4 shadow-sm space-y-4">
-        <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">Patient Details</h3>
-
-        {/* AGE & UNIT */}
-        <div className="grid grid-cols-3 gap-2.5">
-          <div className="col-span-2">
-            <label className="block text-[11px] font-bold text-gray-400 mb-1">{t('age')}</label>
-            <input
-              type="number"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              disabled={isWithdrawn}
-              className="w-full bg-slate-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50"
-            />
-          </div>
-          <div>
-            <label className="block text-[11px] font-bold text-gray-400 mb-1">Unit</label>
-            <select
-              value={ageUnit}
-              onChange={(e) => setAgeUnit(e.target.value as any)}
-              disabled={isWithdrawn}
-              className="w-full bg-slate-50 border border-gray-200 rounded-xl px-2 py-2 text-xs font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50"
-            >
-              <option value="years">Years</option>
-              <option value="months">Months</option>
-              <option value="days">Days</option>
-            </select>
-          </div>
+        <div className="flex items-center justify-between">
+          <h3 className="text-xs font-black text-gray-500 uppercase tracking-wider">Patient Details</h3>
+          {!hasAnyInput && (
+            <span className="text-[10px] font-extrabold bg-blue-50 text-blue-600 px-2.5 py-0.5 rounded-full uppercase">
+              Fixed Dose Protocol
+            </span>
+          )}
         </div>
 
-        {/* WEIGHT & CrCl */}
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label className="block text-[11px] font-bold text-gray-400 mb-1">{t('weight')}</label>
-            <input
-              type="number"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              disabled={isWithdrawn}
-              placeholder="e.g. 70"
-              className="w-full bg-slate-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50"
-            />
+        {!hasAnyInput ? (
+          <div className="bg-slate-50 border border-gray-100 rounded-xl p-3 text-xs text-gray-500 font-medium leading-relaxed">
+            {lang === 'ru' 
+              ? 'Для данного протокола используется фиксированная дозировка. Ввод параметров пациента (вес/КК) не требуется.'
+              : lang === 'th'
+              ? 'สูตรยานี้ใช้ขนาดยาตายตัว ไม่จำเป็นต้องกรอกน้ำหนักหรือค่าการทำงานของไต'
+              : 'This protocol uses a fixed dosage. No patient body parameters (weight/CrCl) are required.'}
           </div>
-          <div>
-            <label className="block text-[11px] font-bold text-gray-400 mb-1">{t('crcl')}</label>
-            <input
-              type="number"
-              value={crcl}
-              onChange={(e) => setCrcl(e.target.value)}
-              disabled={isWithdrawn}
-              placeholder="e.g. 90"
-              className="w-full bg-slate-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50"
-            />
+        ) : (
+          <div className="space-y-3">
+            {/* AGE INPUT (ONLY IF REQUIRED) */}
+            {requiresAgeInput && (
+              <div className="grid grid-cols-3 gap-2.5">
+                <div className="col-span-2">
+                  <label className="block text-[11px] font-bold text-gray-400 mb-1">{t('age')}</label>
+                  <input
+                    type="number"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    disabled={isWithdrawn}
+                    placeholder={agePlaceholder}
+                    className="w-full bg-slate-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50 placeholder:text-gray-300 placeholder:font-normal"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-400 mb-1">Unit</label>
+                  <select
+                    value={ageUnit}
+                    onChange={(e) => setAgeUnit(e.target.value as any)}
+                    disabled={isWithdrawn}
+                    className="w-full bg-slate-50 border border-gray-200 rounded-xl px-2 py-2 text-xs font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50"
+                  >
+                    <option value="years">Years</option>
+                    <option value="months">Months</option>
+                    <option value="days">Days</option>
+                  </select>
+                </div>
+              </div>
+            )}
+
+            {/* WEIGHT & CrCl INPUTS (SHOW ONLY IF REQUIRED) */}
+            <div className={`grid ${requiresWeight && requiresCrcl ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
+              {requiresWeight && (
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-400 mb-1">{t('weight')}</label>
+                  <input
+                    type="number"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                    disabled={isWithdrawn}
+                    placeholder={weightPlaceholder}
+                    className="w-full bg-slate-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50 placeholder:text-gray-300 placeholder:font-normal"
+                  />
+                </div>
+              )}
+
+              {requiresCrcl && (
+                <div>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="text-[11px] font-bold text-gray-400">{t('crcl')}</label>
+                    <button
+                      type="button"
+                      onClick={() => setShowCrclInfo(!showCrclInfo)}
+                      className="text-blue-500 hover:text-blue-600 flex items-center gap-0.5 text-[10px] font-extrabold"
+                    >
+                      <Info className="w-3 h-3" /> CrCl info
+                    </button>
+                  </div>
+                  <input
+                    type="number"
+                    value={crcl}
+                    onChange={(e) => setCrcl(e.target.value)}
+                    disabled={isWithdrawn}
+                    placeholder={crclPlaceholder}
+                    className="w-full bg-slate-50 border border-gray-200 rounded-xl px-3 py-2 text-xs font-bold text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50 placeholder:text-gray-300 placeholder:font-normal"
+                  />
+                </div>
+              )}
+            </div>
+
+            {/* CrCl EXPLANATION TOOLTIP/CARD */}
+            {requiresCrcl && showCrclInfo && (
+              <div className="bg-blue-50/80 border border-blue-100 rounded-xl p-3 text-xs text-blue-950 relative">
+                <button
+                  type="button"
+                  onClick={() => setShowCrclInfo(false)}
+                  className="absolute right-2 top-2 text-blue-400 hover:text-blue-600"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+                <h4 className="font-extrabold text-[11px] uppercase text-blue-800 mb-1">What is CrCl?</h4>
+                <p className="text-[11px] font-medium leading-relaxed text-blue-900/90">
+                  {lang === 'ru'
+                    ? 'CrCl (Клиренс креатинина) — показатель скорости работы почек (мл/мин). Используется для безопасной коррекции дозировок выводимых почками препаратов.'
+                    : lang === 'th'
+                    ? 'CrCl (Creatinine Clearance) คือค่าอัตราการกรองของไต (มล./นาที) ใช้สำหรับปรับลดขนาดยาตามระดับการทำงานของไตของผู้ป่วย'
+                    : 'CrCl (Creatinine Clearance) measures kidney function (mL/min) to safely adjust medication doses for renally excreted drugs.'}
+                </p>
+              </div>
+            )}
           </div>
-        </div>
+        )}
       </div>
 
       {/* ROUTE & STRENGTH SELECTORS */}

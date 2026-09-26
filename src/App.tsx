@@ -32,14 +32,14 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedMedId, setSelectedMedId] = useState<string | null>(null);
   
-  // Medication Details Tab states
+  // Medication Details Tab states — Default empty inputs (no auto-fill!)
   const [activeTab, setActiveTab] = useState<'calculator' | 'information' | 'references'>('calculator');
   const [selectedIndicationId, setSelectedIndicationId] = useState<string>('');
-  const [age, setAge] = useState<string>('32');
+  const [age, setAge] = useState<string>('');
   const [ageUnit, setAgeUnit] = useState<'years' | 'months' | 'days'>('years');
-  const [weight, setWeight] = useState<string>('57');
+  const [weight, setWeight] = useState<string>('');
   const [gender, setGender] = useState<'male' | 'female'>('male');
-  const [crcl, setCrcl] = useState<string>('45');
+  const [crcl, setCrcl] = useState<string>('');
   const [selectedRoute, setSelectedRoute] = useState<string>('');
   const [selectedStrengthId, setSelectedStrengthId] = useState<string>('');
 
@@ -93,24 +93,11 @@ export default function App() {
       const firstStrength = med.availableStrengths?.[0];
       setSelectedStrengthId(firstStrength?.id || '');
 
-      if (firstProtocol) {
-        const weightInput = firstProtocol.requiredInputs?.find(i => i.id === 'weight');
-        setWeight(weightInput?.defaultValue?.toString() || '70');
-
-        const crclInput = firstProtocol.requiredInputs?.find(i => i.id === 'crcl');
-        setCrcl(crclInput?.defaultValue?.toString() || '90');
-
-        if (firstProtocol.population === 'pediatric') {
-          setAge('5');
-          setAgeUnit('years');
-        } else if (firstProtocol.population === 'neonatal') {
-          setAge('10');
-          setAgeUnit('days');
-        } else {
-          setAge('32');
-          setAgeUnit('years');
-        }
-      }
+      // Keep inputs clean/empty (no forced auto-fill numbers!)
+      setWeight('');
+      setCrcl('');
+      setAge('');
+      setAgeUnit(firstProtocol?.population === 'pediatric' ? 'years' : firstProtocol?.population === 'neonatal' ? 'days' : 'years');
     }
 
     setShowResult(false);
@@ -152,16 +139,28 @@ export default function App() {
     setValidationError(null);
     if (!activeProtocol) return;
 
+    const requiredInputsList = activeProtocol.requiredInputs || [];
+    const hasWeight = requiredInputsList.some(i => i.id === 'weight');
+    const hasCrcl = requiredInputsList.some(i => i.id === 'crcl');
+    const hasAgeInput = requiredInputsList.some(i => i.id === 'age') || 
+      (activeProtocol.ageRange !== undefined && (activeProtocol.ageRange.min !== undefined || activeProtocol.ageRange.max !== undefined)) ||
+      activeProtocol.population === 'pediatric' || 
+      activeProtocol.population === 'neonatal';
+
     const weightNum = parseFloat(weight);
     const crclNum = parseFloat(crcl);
 
-    const hasWeight = activeProtocol.requiredInputs.some(i => i.id === 'weight');
+    if (hasAgeInput && (!age.trim() || isNaN(parseFloat(age)) || parseFloat(age) < 0)) {
+      setValidationError(currentLang === 'ru' ? 'Пожалуйста, введите возраст пациента.' : currentLang === 'th' ? 'กรุณากรอกอายุผู้ป่วย' : 'Please enter patient age.');
+      return;
+    }
+
     if (hasWeight) {
-      if (isNaN(weightNum) || weightNum <= 0) {
+      if (!weight.trim() || isNaN(weightNum) || weightNum <= 0) {
         setValidationError(getValidationErrorString('weight', currentLang));
         return;
       }
-      const weightDef = activeProtocol.requiredInputs.find(i => i.id === 'weight');
+      const weightDef = requiredInputsList.find(i => i.id === 'weight');
       if (weightDef) {
         if (weightDef.min && weightNum < weightDef.min) {
           setValidationError(getValidationErrorString('min_weight', currentLang, weightDef.min));
@@ -174,13 +173,12 @@ export default function App() {
       }
     }
 
-    const hasCrcl = activeProtocol.requiredInputs.some(i => i.id === 'crcl');
     if (hasCrcl) {
-      if (isNaN(crclNum) || crclNum <= 0) {
+      if (!crcl.trim() || isNaN(crclNum) || crclNum <= 0) {
         setValidationError(getValidationErrorString('crcl', currentLang));
         return;
       }
-      const crclDef = activeProtocol.requiredInputs.find(i => i.id === 'crcl');
+      const crclDef = requiredInputsList.find(i => i.id === 'crcl');
       if (crclDef) {
         if (crclDef.min && crclNum < crclDef.min) {
           setValidationError(getValidationErrorString('min_crcl', currentLang, crclDef.min));
