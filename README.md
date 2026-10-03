@@ -67,19 +67,13 @@ Each medication record is structured into three intuitive clinical tabs:
 *Real screenshots showcasing the application interface, search, categories, and calculator:*
 
 #### Home & Search Screen
-```markdown
 ![Home Screen](docs/screenshots/main.png)
-```
 
 #### Medication Calculation & Dosing Tab
-```markdown
 ![Calculator Tab](docs/screenshots/medicine.png)
-```
 
 #### Welcome / Disclaimer Screen
-```markdown
 ![Disclaimer Screen](docs/screenshots/first.png)
-```
 
 ---
 
